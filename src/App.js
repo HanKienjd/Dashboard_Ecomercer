@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import RouterList from "./RouterList.js";
+import { BrowserRouter as Router, useHistory } from "react-router-dom";
+import SideBar from "./components/layout/SideBar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const history = useHistory();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SideBar />
+      <Router history={history}>
+        <RouterList />
+      </Router>
     </div>
   );
 }
