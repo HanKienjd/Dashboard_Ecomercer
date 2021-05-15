@@ -1,20 +1,23 @@
-import React from "react";
-import RouterList from "./RouterList.js";
-import { BrowserRouter as Router, useHistory } from "react-router-dom";
+import React, { Component } from "react";
+import RouterList from "./router.js";
+import { BrowserRouter as Router } from "react-router-dom";
 import SideBar from "./components/layout/SideBar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "antd/dist/antd.css";
 
-function App() {
-  const history = useHistory();
-
+const App = () => {
   return (
     <div className="App">
-      <SideBar />
-      <Router history={history}>
-        <RouterList />
-      </Router>
+      <div className="container-fluid">
+        <div className="row">
+          <SideBar />
+          <Router>
+            <RouterList />
+          </Router>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
