@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import SideBar from "./components/layout/SideBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.css";
+import "./CSS/custom.css";
 
 const App = () => {
   return (

@@ -3,6 +3,8 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "./components/admin/Home";
 import ProductForm from "./components/admin/ProductManage/ProductForm";
+import ProductCreate from "./components/admin/ProductManage/ProductCreate";
+import Login from "./components/admin/Auth/Login";
 function RouterList() {
   return (
     <Switch>
@@ -11,6 +13,7 @@ function RouterList() {
       </Route>
       <Route path="/cms" component={Home} />
       <Route path="/product/form" component={ProductForm} />
+      <Route path="/login" component={Login} />
     </Switch>
   );
 }

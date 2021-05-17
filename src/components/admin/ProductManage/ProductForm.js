@@ -1,7 +1,12 @@
-import React from "react";
-import { Col, Table, Tag, Space } from "antd";
-
+import React, { useState } from "react";
+import { Col, Table, Tag, Space, Button, Row, Modal } from "antd";
+import ProductCreate from "./ProductCreate";
 const columns = [
+  {
+    title: "Ảnh sản phẩm",
+    dataIndex: "image",
+    key: "image",
+  },
   {
     title: "Tên sản phẩm",
     dataIndex: "name",
@@ -73,9 +78,20 @@ const data = [
 ];
 
 const ProductForm = () => {
+  const [visible, setVisible] = useState(false);
+
   return (
     <div className="product-form col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <Row gutter={[16, 32]} justify="end">
+        <Button type="primary" onClick={() => setVisible(true)}>
+          Tạo sản phẩm
+        </Button>
+      </Row>
       <Table columns={columns} dataSource={data} />
+
+      <Modal visible={visible} width={1200} onCancel={() => setVisible(false)}>
+        <ProductCreate />
+      </Modal>
     </div>
   );
 };
