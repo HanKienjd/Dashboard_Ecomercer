@@ -1,7 +1,7 @@
-- project web ôn thi
-  - save là master lâu nhất
-  - tempt là nhánh lâu nhì (bị lỗi 2 layout)
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- project phát triển ứng dụng web
+  - run: npm install --save
+  - start: npm start : PORT 8000
+    This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
