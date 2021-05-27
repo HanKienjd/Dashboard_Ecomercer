@@ -1,24 +1,56 @@
-import React, { Component } from "react";
-import RouterList from "./router.js";
-import { BrowserRouter as Router } from "react-router-dom";
-import SideBar from "./components/layout/SideBar";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "antd/dist/antd.css";
-import "./CSS/custom.css";
+import React from "react";
+import { connect } from "react-redux";
+import * as CommonIcon from "components/icons/common";
 
-const App = () => {
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import ReactNotification from "react-notifications-component";
+import myReducer from "./reducers";
+import Header from "./components/header/Header";
+
+import Footer from "./components/footer/Footer";
+import "./common.scss";
+import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
+// import MainContent from './components/body/layout/MainContent';
+import RouterList from "./components/router/RouterList";
+
+import "bootstrap/dist/css/bootstrap.css";
+import "react-notifications-component/dist/theme.css";
+import "react-datepicker/dist/react-datepicker.css";
+import thunk from "redux-thunk";
+import ChatBot from "components/chatbot/ChatBot";
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk)
+  // other store enhancers if any
+);
+const store = createStore(myReducer, enhancer);
+
+// const store = createStore(
+//   myReducer,
+//   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(),
+//   applyMiddleware(
+//     thunk,
+//   )
+// );
+
+function App(props) {
+  const history = useHistory();
   return (
     <div className="App">
-      <div className="container-fluid">
-        <div className="row">
-          <SideBar />
-          <Router>
-            <RouterList />
-          </Router>
-        </div>
-      </div>
+      <Provider store={store}>
+        <Router history={history}>
+          <ReactNotification />
+          <Header />
+          {/* <MainContent /> */}
+          <RouterList />
+          {/* <ChatBot /> */}
+          <Footer />
+        </Router>
+      </Provider>
     </div>
   );
-};
+}
 
 export default App;
