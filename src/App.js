@@ -27,14 +27,6 @@ const enhancer = composeEnhancers(
 );
 const store = createStore(myReducer, enhancer);
 
-// const store = createStore(
-//   myReducer,
-//   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(),
-//   applyMiddleware(
-//     thunk,
-//   )
-// );
-
 function App(props) {
   const history = useHistory();
   return (
