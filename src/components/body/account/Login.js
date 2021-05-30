@@ -12,7 +12,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      email: "",
       password: "",
     };
   }
@@ -33,20 +33,22 @@ class Login extends React.Component {
   };
 
   submit = (e) => {
-    const { username, password, errorPassword, errorUsername } = this.state;
+    const { email, password, errorPassword, errorUsername } = this.state;
     const isCanSubmit = !errorUsername && !errorPassword;
 
     if (!isCanSubmit)
       return window.noti.error("Bạn chưa nhập tài khoản hoặc mật khẩu");
-    this.props.login(username, password);
+    this.props.login(email, password);
+    console.log("email", email);
+    console.log("password", password);
   };
 
   render() {
-    const { username, password, errorUsername, errorPassword } = this.state;
+    const { email, password, errorUsername, errorPassword } = this.state;
     if (getCookie("_accessToken")) {
       return <Redirect to="/" />;
     }
-    // const isCanSubmit = !isChecked && !errorName && !errorUsername && !errorPassword1 && !errorPassword2 && !errorEmail;
+    // const isCanSubmit = !isChecked && !errorName && !erroremail && !errorPassword1 && !errorPassword2 && !errorEmail;
     return (
       <UserContent>
         <div className="wrapper-login d-flex flex-column">
@@ -55,12 +57,12 @@ class Login extends React.Component {
           <div className="login-form d-flex flex-column">
             <input
               type="text"
-              value={username || ""}
+              value={email || ""}
               className={errorUsername ? "error" : ""}
               placeholder="Nhập tài khoản"
               title={errorUsername}
               onChange={(e) =>
-                this.onChangeMax255("username", e.target.value, "errorUsername")
+                this.onChangeMax255("email", e.target.value, "errorUsername")
               }
               onBlur={(e) =>
                 this.onBlurNotNull("errorUsername", e.target.value)

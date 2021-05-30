@@ -1,7 +1,7 @@
 import callApi from "./common/callApi";
 import { actionTypes } from "../constants/actionTypes";
 import { getCookie, setCookie } from "./common/utils";
-
+import { message } from "antd";
 export const getUserInfo = () => (dispatch, getState) => {
   return callApi("api/profile/get", { method: "POST", data: { body: {} } })
     .then((obj) => {
@@ -16,14 +16,14 @@ export const getUserInfo = () => (dispatch, getState) => {
     .catch((err) => {});
 };
 
-export const login = (username, password) => (dispatch, getState) => {
+export const login = (email, password) => (dispatch, getState) => {
   return callApi("api/sign-in", {
     method: "POST",
-    data: { body: { username, password } },
+    data: { email, password },
   })
     .then(({ data, code, message }) => {
       if (data && code === 200) {
-        const accessToken = data.token;
+        const accessToken = data.accessToken;
         // const obj = JSON.parse(atob(accessToken.split('.')[1]));
         // dispatch({
         //   type: actionTypes.RECEIVE_ACCESS_TOKEN,
@@ -40,7 +40,9 @@ export const login = (username, password) => (dispatch, getState) => {
         window.noti.error("Tài khoản hoặc mật khẩu không đúng");
       }
     })
-    .catch((err) => {});
+    .catch((error) => {
+      console.log("error", error);
+    });
 };
 
 export const logout = () => (dispatch, getState) => {
@@ -53,19 +55,13 @@ export const logout = () => (dispatch, getState) => {
 };
 
 export const createAccount =
-  (name, username, password1, email) => (dispatch, getState) => {
+  (email, newPassword, confirmPassword) => (dispatch, getState) => {
     const reqBody = {
-      body: {
-        userRegister: {
-          username,
-          fullname: name,
-          password: password1,
-          email,
-          // phone: '0967362612',
-        },
-      },
+      email: email,
+      password: newPassword,
+      passwordConfirmation: confirmPassword,
     };
-    return callApi("register", { method: "POST", data: reqBody })
+    return callApi("api/sign-up", { method: "POST", data: reqBody })
       .then(({ data, code, message }) => {
         if (data && code === 200) {
           window.noti.success("Đăng ký tài khoản thành công");

@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as CommonIcon from "components/icons/common";
-
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import ReactNotification from "react-notifications-component";
@@ -35,9 +34,7 @@ function App(props) {
         <Router history={history}>
           <ReactNotification />
           <Header />
-          {/* <MainContent /> */}
           <RouterList />
-          {/* <ChatBot /> */}
           <Footer />
         </Router>
       </Provider>

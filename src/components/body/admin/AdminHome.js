@@ -1,313 +1,217 @@
 /* eslint-disable no-restricted-globals */
+import React from "react";
+import { connect } from "react-redux";
+import { Link, Redirect, withRouter } from "react-router-dom";
+import AdminContent from "../layout/AdminContent";
 
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link, Redirect, withRouter } from 'react-router-dom';
-import * as CommonIcon from 'components/icons/common';
-import { getAvatar, changeLayout } from 'actions/userActions';
-import {
-  getAllExam,
-  changeHeader,
-  changeActiveExam,
-  deleteExam,
-  getDetailExam,
-  changeActivePage,
-} from 'actions/examActions';
-
-import AdminContent from '../layout/AdminContent';
-import './AdminHome.scss';
-import Pagination from 'react-js-pagination';
-import { getObjLevel, getObjSubject } from 'actions/common/getInfo';
-
-const SIZE = 10;
-class AdminHome extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activePage: 1,
-      inputSearch: '',
-      selectedExamIds: [],
-    };
-  }
-
-  componentDidMount() {
-    this.props.changeHeader('Danh sách đề');
-    this.props.changeLayout(1);
-    this.reload();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { pagination } = this.props;
-    if (nextProps.pagination && nextProps.pagination !== pagination) {
-      this.setState({
-        activePage: pagination.activePage,
-      })
-    }
-  }
-
-  reload = () => {
-    let { activePage, inputSearch } = this.state;
-    this.props.getAllExam(inputSearch, activePage, SIZE);
-    // if (inputSearch === '' || inputSearch == null) this.apiGetPage(activePage, SIZE);
-    // else this.apiSearchPage(activePage, SIZE, inputSearch);
-  }
-
-  handlePageChange = (pageNumber) => {
-    this.setState({ activePage: pageNumber }, () => {
-      this.props.changeActivePage(pageNumber);
-      this.reload()
-    });
-  }
-
-  seeDetailExam = (e, id) => {
-    e.stopPropagation();
-    const { history } = this.props;
-    history.push(`/admin/update-exam/${id}`);
-  }
-
-  deleteExam = (e, id, canDelete) => {
-    if (!canDelete) return;
-    e.stopPropagation();
-    if (confirm('Thao tác này không thể khôi phục, bạn có chắc chắn xóa ?')) {
-      this.props.deleteExam([id]);
-    }
-  }
-
-  deleteExamList = (e) => {
-    e.stopPropagation();
-    const { all } = this.props;
-    const { selectedExamIds } = this.state;
-    if (!selectedExamIds || selectedExamIds.length === 0) return;
-    const notDelete = all.find(item => selectedExamIds.includes(item.id) && !item.canDelete);
-    if (notDelete) {
-      return window.noti.error('Không thể xóa đề đã kích hoạt và đã có người làm');
-    }
-    if (confirm('Thao tác này không thể khôi phục, bạn có chắc chắn xóa ?')) {
-      this.props.deleteExam(selectedExamIds);
-    }
-  }
-
-  changeActiveExam = (e, id, isActive) => {
-    if (!isActive) {
-      if (confirm('Kích hoạt đề để mọi người có thể làm đề, nhưng sẽ không thể xóa đề được nữa kể cả có tắt kích hoạt, bạn có chắc chắn kích hoạt ?')) {
-        this.props.changeActiveExam(id, isActive);
-      }
-    }
-    else {
-      this.props.changeActiveExam(id, isActive);
-    }
-    e.stopPropagation();
-  }
-
-  selectAll = () => {
-    let { selectedExamIds } = this.state;
-    if (selectedExamIds.length === this.props.all.length) {
-      selectedExamIds = [];
-      this.setState({ selectedExamIds });
-    } else {
-      selectedExamIds = [];
-      for (let index = 0; index < this.props.all.length; index++) {
-        selectedExamIds.push(this.props.all[index].id);
-      }
-      this.setState({ selectedExamIds });
-    }
-  };
-
-  isChoose = (id) => {
-    const { selectedExamIds } = this.state;
-    let exist = false;
-    if (selectedExamIds.length !== 0) {
-      for (let index = 0; index < selectedExamIds.length; index++) {
-        if (selectedExamIds[index] === id) {
-          exist = true;
-          break;
-        }
-      }
-    }
-    return exist;
-  };
-
-  selectOne = (e, id) => {
-    e.stopPropagation();
-    const { selectedExamIds } = this.state;
-    let exist = false;
-    if (selectedExamIds.length !== 0) {
-      for (let index = 0; index < selectedExamIds.length; index++) {
-        if (selectedExamIds[index] === id) {
-          exist = true;
-          selectedExamIds.splice(index, 1);
-          break;
-        }
-      }
-    }
-    if (!exist) {
-      selectedExamIds.push(id);
-    }
-    this.setState({ selectedExamIds });
-  };
-
-
-  renderBody = (all) => {
-    // id, name, image, subject, grade, description, time, canDelete, examQuestions
-    return all.map(item => {
-      return (
-        <tr onClick={(e) => this.seeDetailExam(e, item.id)} key={'admin-home' + item.id}>
-          <td className="col col-checkbox">
-            <div className="wrapper-icon checkbox" onClick={(e) => this.selectOne(e, item.id)}>
-              <input type="checkbox"
-                className=""
-                checked={this.isChoose(item.id)}
-                readOnly
-              />
+const AdminHome = (props) => {
+  return (
+    <AdminContent>
+      <div className="admin-home">
+        <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div className="chartjs-size-monitor">
+            <div className="chartjs-size-monitor-expand">
+              <div className />
             </div>
-          </td>
-          <td className="col col-code">
-            <div className="text-ellipsis-line-clamp-2">
-              {item.code}
+            <div className="chartjs-size-monitor-shrink">
+              <div className />
             </div>
-          </td>
-          <td className="col col-name">
-            <div className="text-ellipsis-line-clamp-2">
-              {item.name}
-            </div>
-          </td>
-          <td className="col col-subject">{getObjSubject(item.subject).vn}</td>
-          <td className="col col-grade">{getObjLevel(item.grade).vn}</td>
-          <td className="col col-time">{`${item.time} phút`}</td>
-          <td className="col col-action">
-            <div className="d-flex">
-              <div className="wrapper-icon" title="Chỉnh sửa" onClick={(e) => this.seeDetailExam(e, item.id)}>
-                <CommonIcon.edit />
+          </div>
+          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 className="h2">Dashboard</h1>
+            <div className="btn-toolbar mb-2 mb-md-0">
+              <div className="btn-group me-2">
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-secondary"
+                >
+                  Share
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-secondary"
+                >
+                  Export
+                </button>
               </div>
-              {
-                item.canDelete ? (
-                  <div
-                    className={`wrapper-icon ${item.canDelete ? '' : 'disable'}`} title={`${item.canDelete ? 'Xóa' : 'Không thẻ xóa đề đã có người làm'}`}
-                    onClick={(e) => this.deleteExam(e, item.id, item.canDelete)}
-                  >
-                    <CommonIcon.remove />
-                  </div>
-                ) : null
-              }
-              {
-                item.isActive ? (
-                  <div className="toggle-icon" title="Ngưng kích hoạt" onClick={(e) => this.changeActiveExam(e, item.id, item.isActive)}>
-                    <CommonIcon.toggleOn />
-                  </div>
-                ) : (
-                    <div className="toggle-icon" title="Kích hoạt" 
-                    onClick={(e) => {
-                      if (item.examQuestions && item.examQuestions.length > 0) this.changeActiveExam(e, item.id, item.isActive)
-                      else {
-                        e.stopPropagation();
-                        window.noti.error('Đề này chưa có câu hỏi');
-                      }
-                    }}
-                    >
-                      <CommonIcon.toggleOff />
-                    </div>
-                  )
-              }
-            </div>
-          </td>
-        </tr>
-      )
-    })
-  }
-
-  render() {
-    const { activePage, inputSearch, selectedExamIds } = this.state;
-    const { role, all, pagination, isDone } = this.props;
-    const isChooseAll = selectedExamIds.length === all.length && all.length !== 0;
-    if ((!role || !role.includes("ROLE_ADMIN")) && isDone) return <Redirect to='/' />
-    return (
-      <AdminContent>
-        <div className="admin-home">
-          <div className="wrapper-search d-flex">
-            <div className="w-75 d-flex">
-              <button className="btn btn-outline-info mr-2" onClick={(e) => this.deleteExamList(e)}>
-                Xóa nhiều
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-secondary dropdown-toggle"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-calendar"
+                >
+                  <rect x={3} y={4} width={18} height={18} rx={2} ry={2} />
+                  <line x1={16} y1={2} x2={16} y2={6} />
+                  <line x1={8} y1={2} x2={8} y2={6} />
+                  <line x1={3} y1={10} x2={21} y2={10} />
+                </svg>
+                This week
               </button>
-              <input className="w-75" type="search" placeholder="Tìm kiếm"
-                value={inputSearch} onChange={(e) => this.setState({ inputSearch: e.target.value })}
-                onBlur={e => this.reload()}
-              />
-            </div>
-            <div className="w-25 d-flex justify-content-end">
-              <Link to='/admin/create-exam' >
-                <button className="btn btn-info">Thêm mới đề</button>
-              </Link>
             </div>
           </div>
-
-          <table className="table table-hover">
-            <thead>
-              <tr>
-                <th className="col col-checkbox">
-                  <div
-                    className="wrapper-check-all d-flex p-1 justify-content-between align-items-center"
-                    title="Chọn tất cả"
-                    onClick={() => this.selectAll()}
-                  >
-                    <input type="checkbox"
-                      checked={isChooseAll}
-                      readOnly
-                    />
-                    <CommonIcon.caretDownFill />
-                  </div>
-                </th>
-                <th className="col col-code">Mã đề</th>
-                <th className="col col-name">Tên đề</th>
-                <th className="col col-subject">Môn học</th>
-                <th className="col col-grade">Cấp bậc</th>
-                <th className="col col-time">Thời gian</th>
-                <th className="col col-action">Thao tác</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.renderBody(all)}
-            </tbody>
-          </table>
-
-          <div className='pagination d-flex justify-content-center'>
-            <Pagination
-              activePage={activePage}
-              itemsCountPerPage={SIZE}
-              totalItemsCount={pagination.totalElements}
-              pageRangeDisplayed={5}  // số nút hiển thị
-              onChange={this.handlePageChange}
-              itemClass={"page-item"}
-              linkClass={"page-link"}
-            />
+          <canvas
+            className="my-4 w-100 chartjs-render-monitor"
+            id="myChart"
+            width={1538}
+            height={649}
+            style={{ display: "block", width: "1538px", height: "649px" }}
+          />
+          <h2>Section title</h2>
+          <div className="table-responsive">
+            <table className="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1,001</td>
+                  <td>random</td>
+                  <td>data</td>
+                  <td>placeholder</td>
+                  <td>text</td>
+                </tr>
+                <tr>
+                  <td>1,002</td>
+                  <td>placeholder</td>
+                  <td>irrelevant</td>
+                  <td>visual</td>
+                  <td>layout</td>
+                </tr>
+                <tr>
+                  <td>1,003</td>
+                  <td>data</td>
+                  <td>rich</td>
+                  <td>dashboard</td>
+                  <td>tabular</td>
+                </tr>
+                <tr>
+                  <td>1,003</td>
+                  <td>information</td>
+                  <td>placeholder</td>
+                  <td>illustrative</td>
+                  <td>data</td>
+                </tr>
+                <tr>
+                  <td>1,004</td>
+                  <td>text</td>
+                  <td>random</td>
+                  <td>layout</td>
+                  <td>dashboard</td>
+                </tr>
+                <tr>
+                  <td>1,005</td>
+                  <td>dashboard</td>
+                  <td>irrelevant</td>
+                  <td>text</td>
+                  <td>placeholder</td>
+                </tr>
+                <tr>
+                  <td>1,006</td>
+                  <td>dashboard</td>
+                  <td>illustrative</td>
+                  <td>rich</td>
+                  <td>data</td>
+                </tr>
+                <tr>
+                  <td>1,007</td>
+                  <td>placeholder</td>
+                  <td>tabular</td>
+                  <td>information</td>
+                  <td>irrelevant</td>
+                </tr>
+                <tr>
+                  <td>1,008</td>
+                  <td>random</td>
+                  <td>data</td>
+                  <td>placeholder</td>
+                  <td>text</td>
+                </tr>
+                <tr>
+                  <td>1,009</td>
+                  <td>placeholder</td>
+                  <td>irrelevant</td>
+                  <td>visual</td>
+                  <td>layout</td>
+                </tr>
+                <tr>
+                  <td>1,010</td>
+                  <td>data</td>
+                  <td>rich</td>
+                  <td>dashboard</td>
+                  <td>tabular</td>
+                </tr>
+                <tr>
+                  <td>1,011</td>
+                  <td>information</td>
+                  <td>placeholder</td>
+                  <td>illustrative</td>
+                  <td>data</td>
+                </tr>
+                <tr>
+                  <td>1,012</td>
+                  <td>text</td>
+                  <td>placeholder</td>
+                  <td>layout</td>
+                  <td>dashboard</td>
+                </tr>
+                <tr>
+                  <td>1,013</td>
+                  <td>dashboard</td>
+                  <td>irrelevant</td>
+                  <td>text</td>
+                  <td>visual</td>
+                </tr>
+                <tr>
+                  <td>1,014</td>
+                  <td>dashboard</td>
+                  <td>illustrative</td>
+                  <td>rich</td>
+                  <td>data</td>
+                </tr>
+                <tr>
+                  <td>1,015</td>
+                  <td>random</td>
+                  <td>tabular</td>
+                  <td>information</td>
+                  <td>text</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-      </AdminContent>
-
-
-    );
-  }
-}
+        </main>
+      </div>
+    </AdminContent>
+  );
+};
 
 const mapStateToProps = (state, ownProps) => {
-  const { auth: { account, isDone }, exam: { all, callingApi, pagination } } = state;
+  const {
+    auth: { account, isDone },
+    exam: { all, callingApi, pagination },
+  } = state;
   return {
     role: account.role,
     isDone,
     all: all || [],
     pagination: pagination || {},
     callingApi,
-  }
-}
+  };
+};
 
-export default withRouter(connect(
-  mapStateToProps,
-  {
-    changeLayout,
-    getAllExam,
-    changeHeader,
-    changeActiveExam,
-    deleteExam,
-    getDetailExam,
-    changeActivePage,
-  }
-)(AdminHome));
+export default withRouter(connect(mapStateToProps, {})(AdminHome));

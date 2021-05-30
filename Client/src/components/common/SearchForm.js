@@ -15,7 +15,7 @@ export default class SearchForm extends PureComponent {
   }
 
   componentDidMount() {
-    const placeholder = this.props.placeholder.map((item) => `${item}     `);
+    const placeholder = this.props.placeholder.map((item) => `${item}`);
     if (placeholder.length) {
       this.state.interval = setInterval(() => {
         let { string, index, direction } = this.state.placeholder;
