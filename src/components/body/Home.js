@@ -5,11 +5,7 @@ import { getAvatar, changeLayout } from "actions/userActions";
 import MainContent from "components/body/layout/MainContent";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import { subjects2 } from "actions/common/getInfo";
-import HighSchoolTable from "./home-content/HighSchoolTable";
-import CollegeTable from "./home-content/CollegeTable";
-
 import "./styles/Home.scss";
-
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -52,8 +48,6 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
-          <HighSchoolTable />
-          <CollegeTable />
         </div>
       </MainContent>
     );
