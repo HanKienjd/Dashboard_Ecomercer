@@ -8,10 +8,11 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "antd": "^4.16.0",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "ckeditor4-react": "^1.2.0",
-    "jquery": "^3.5.1",
+    "jquery": "^3.6.0",
     "moment": "^2.28.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
@@ -32,9 +33,10 @@
   },
   "scripts": {
     "start": "set PORT=8000 && react-scripts start",
-    "build": "react-scripts build",
+    "build": "rm -rf build/ && react-scripts build && npm run-script sw",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sw": "cat src/sw.js >> build/service-worker.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,5 +52,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "css-loader": "^5.2.6",
+    "style-loader": "^2.0.0"
   }
 }
