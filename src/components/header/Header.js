@@ -57,15 +57,11 @@ const Header = (props) => {
         <Link to="/thong-tin-ca-nhan">
           <div className="dropdown-item">Tài khoản cá nhân</div>
         </Link>
-        <Link to="/lich-su">
-          <div className="dropdown-item">Lịch sử thi</div>
+        {/* {(!role || !role.includes("ROLE_ADMIN")) && isDone ? null : ( */}
+        <Link to="/admin" onClick={() => this.props.changeLayout(1)}>
+          <div className="dropdown-item">Trang quản lý</div>
         </Link>
-        {(!props.role || !props.role.includes("ROLE_ADMIN")) &&
-        props.isDone ? null : (
-          <Link to="/admin" onClick={() => changeLayout(1)}>
-            <div className="dropdown-item">Trang quản lý</div>
-          </Link>
-        )}
+        {/* )} */}
         <Link to="/doi-mat-khau">
           <div className="dropdown-item">Đổi mật khẩu</div>
         </Link>

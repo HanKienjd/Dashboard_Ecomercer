@@ -1,11 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as CommonIcon from "components/icons/common";
-
 import ReactDOM from "react-dom";
-// import './index.css';
 import App from "./App";
-// import * as serviceWorker from './serviceWorker';
 import { store } from "react-notifications-component";
 import callApi from "./actions/common/callApi";
 
