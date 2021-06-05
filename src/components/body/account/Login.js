@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as CommonIcon from "components/icons/common";
 import { Link, Redirect } from "react-router-dom";
 import UserContent from "components/body/layout/UserContent";
-
 import "./styles/Login.scss";
 import { login } from "actions/userActions";
 import { getCookie } from "actions/common/utils";
@@ -39,8 +38,6 @@ class Login extends React.Component {
     if (!isCanSubmit)
       return window.noti.error("Bạn chưa nhập tài khoản hoặc mật khẩu");
     this.props.login(email, password);
-    console.log("email", email);
-    console.log("password", password);
   };
 
   render() {
