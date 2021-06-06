@@ -1,14 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as CommonIcon from "components/icons/common";
-
 import { Link, Redirect } from "react-router-dom";
 import { regex, errorText } from "constants/regexError";
 import UserContent from "./layout/UserContent";
 import { createAccount } from "actions/userActions";
-// import './styles/Register.scss';
-
-import "./styles/Registers.scss";
 
 class Register extends React.Component {
   constructor(props) {

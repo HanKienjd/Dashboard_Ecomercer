@@ -9,7 +9,6 @@ const callApi = function callApi(pathUrl, options) {
     options.headers = {
       Authorization: "Bearer " + accessToken,
       TIMESTAMP: new Date().getTime(),
-      // 'Accept': '*/*',
       "Content-Type": "application/json",
       "Access-Control-Allow-Credentials": "true",
       "Access-Control-Allow-Origin": "*",
