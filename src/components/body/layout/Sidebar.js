@@ -30,7 +30,7 @@ const SideBar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/product/form">
+            <a className="nav-link" href="/admin/products/list">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={24}
@@ -93,8 +93,8 @@ const SideBar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/category">
-              <i className="fas fa-cart-plus"></i>
+            <a className="nav-link" href="/admin/category/list">
+              <i className="far fa-list-alt"></i>
               Quản lý danh mục sản phẩm
             </a>
           </li>

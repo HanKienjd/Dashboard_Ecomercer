@@ -1,9 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as CommonIcon from "components/icons/common";
-import { getAvatar, changeLayout, toggleSidebar } from "actions/userActions";
+import { changeLayout, toggleSidebar } from "actions/userActions";
 import Sidebar from "./Sidebar";
-import "./styles/AdminContent.scss";
 class AdminContent extends React.Component {
   constructor(props) {
     super(props);
@@ -15,16 +13,16 @@ class AdminContent extends React.Component {
   }
 
   render() {
-    const { children, style, header } = this.props;
+    const { children, style } = this.props;
     return (
       <React.Fragment>
         <div className="admin-content d-flex" style={{ background: "#f5f5f5" }}>
           <Sidebar />
-          <div className="wrapper-content">
-            <div className="header-admin-layout"></div>
-            <div className="wrapper-admin-layout" style={{ style }}>
-              {children}
-            </div>
+          <div
+            className="product-form col-md-9 ms-sm-auto col-lg-10 px-md-4"
+            style={{ style }}
+          >
+            {children}
           </div>
         </div>
       </React.Fragment>

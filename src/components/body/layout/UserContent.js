@@ -1,13 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import * as CommonIcon from 'components/icons/common';
-import { getAvatar, changeLayout } from 'actions/userActions';
-
-
-
-import UserRouterList from '../../router/UserRouterList';
-// import './styles/MainContent.scss';
-
+import React from "react";
+import { connect } from "react-redux";
+import * as CommonIcon from "components/icons/common";
+import { getAvatar, changeLayout } from "actions/userActions";
 class UserContent extends React.Component {
   constructor(props) {
     super(props);
@@ -22,10 +16,24 @@ class UserContent extends React.Component {
     const { children, marginStyle } = this.props;
     return (
       <React.Fragment>
-        <div className='user-content' style={{ height: '100%', background: '#f5f5f5', padding: '70px 0 20px 0' }}>
-          <div className='container'>
-            <div className='wrapper-user-layout' style={{ borderRadius: 6, padding: '25px 15px', margin: marginStyle || '0 10%', background: '#FFF' }}>
-              {/* <UserRouterList /> */}
+        <div
+          className="user-content"
+          style={{
+            height: "100%",
+            background: "#f5f5f5",
+            padding: "70px 0 20px 0",
+          }}
+        >
+          <div className="container">
+            <div
+              className="wrapper-user-layout"
+              style={{
+                borderRadius: 6,
+                padding: "25px 15px",
+                margin: marginStyle || "0 10%",
+                background: "#FFF",
+              }}
+            >
               {children}
             </div>
           </div>
@@ -35,13 +43,6 @@ class UserContent extends React.Component {
   }
 }
 
-
-// const mapStateToProps = (state, ownProps) => {
-
-// };
-
-export default connect(null,
-  {
-    changeLayout,
-  }
-)(UserContent);
+export default connect(null, {
+  changeLayout,
+})(UserContent);

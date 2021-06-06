@@ -1,15 +1,11 @@
 import callApi from "./common/callApi";
 import { actionTypes } from "../constants/actionTypes";
 import { getCookie, setCookie } from "./common/utils";
-import { message } from "antd";
+
 export const getUserInfo = () => (dispatch, getState) => {
   return callApi("api/profile/get", { method: "POST", data: { body: {} } })
     .then((obj) => {
       if (obj && obj.data && obj.code === 200) {
-        // dispatch({
-        //   type: actionTypes.GET_USER_INFO,
-        //   user: obj.data.userProfile || {},
-        // });
         dispatch(receiveUserInfo(obj.data.userProfile || {}));
       }
     })
@@ -24,13 +20,6 @@ export const login = (email, password) => (dispatch, getState) => {
     .then(({ data, code, message }) => {
       if (data && code === 200) {
         const accessToken = data.accessToken;
-        // const obj = JSON.parse(atob(accessToken.split('.')[1]));
-        // dispatch({
-        //   type: actionTypes.RECEIVE_ACCESS_TOKEN,
-        //   accessToken,
-        //   role: obj.ROLE,
-        // });
-        // localStorage.setItem('accessToken', accessToken);
         setCookie("_accessToken", accessToken, 4);
         dispatch(init());
         window.noti.success("Đăng nhập thành công");
@@ -102,14 +91,12 @@ export const changePassword =
           dispatch(callApiUser());
         }
         if (code === 400) {
-          // if (message === 'OTP Invalid') return window.noti.error('Đổi mật khẩu thất bại, mã OTP không đúng');
           window.noti.error("Đổi mật khẩu thất bại");
           dispatch(callApiUser());
         }
       })
       .catch((err) => {
         dispatch(callApiUser());
-        // window.noti.error('Đổi mật khẩu thất bại');
       });
   };
 
@@ -221,7 +208,6 @@ export const changeAvatar = (imgBase64, typeFile) => (dispatch, getState) => {
           type: actionTypes.UPDATE_AVATAR,
           avatar: imgBase64,
         });
-        // window.noti.success('Thay đổi ảnh đại diện thành công');
       }
       if (code === 400) {
         window.noti.success("Thay đổi ảnh đại diện thất bại");
@@ -239,10 +225,8 @@ export const getAvatar = () => (dispatch, getState) => {
           type: actionTypes.UPDATE_AVATAR_USER,
           avatar: data.imgBase64,
         });
-        // window.noti.success('Thay đổi ảnh đại diện thành công');
       }
       if (code === 400) {
-        // window.noti.success('Thay đổi ảnh đại diện thất bại');
       }
     })
     .catch((err) => {});
@@ -257,15 +241,9 @@ export const sendMessage = (message) => (dispatch, getState) => {
   return callApi("chat", { method: "POST", data: reqBody })
     .then(({ data, code, message }) => {
       if (data && code === 200) {
-        // dispatch({
-        //   type: actionTypes.UPDATE_AVATAR_USER,
-        //   avatar: data.message,
-        // });
-        // window.noti.success('Thay đổi ảnh đại diện thành công');
         return data.message;
       }
       if (code === 400) {
-        // window.noti.success('Thay đổi ảnh đại diện thất bại');
       }
     })
     .catch((err) => {});
