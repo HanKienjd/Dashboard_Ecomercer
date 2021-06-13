@@ -263,9 +263,8 @@ export const toggleSidebar = () => (dispatch, getState) => {
 };
 
 export const init = () => (dispatch) => {
-  const accessToken1 = localStorage.getItem("accessToken");
+  // const accessToken1 = localStorage.getItem("accessToken");
   const accessToken = getCookie("_accessToken");
-  console.log("accessToken1", accessToken1);
   let obj = {};
   try {
     obj = JSON.parse(atob(accessToken.split(".")[1]));

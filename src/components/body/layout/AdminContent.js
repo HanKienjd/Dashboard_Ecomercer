@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { changeLayout, toggleSidebar } from "actions/userActions";
 import Sidebar from "./Sidebar";
+import "antd/dist/antd.css";
 class AdminContent extends React.Component {
   constructor(props) {
     super(props);

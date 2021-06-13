@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Col, Table, Tag, Space, Button, Row, Modal } from "antd";
+import { Col, Table, Tag, Space, Button, Row, Modal, PageHeader } from "antd";
 import ProductsForm from "./ProductsForm";
 import AdminContent from "components/body/layout/AdminContent";
 import callApi from "actions/common/callApi";
@@ -82,13 +82,22 @@ const ProductsList = () => {
   return (
     <AdminContent>
       <Row gutter={[16, 32]} justify="end">
-        <Button type="primary" onClick={() => setVisible(true)}>
-          Tạo sản phẩm
-        </Button>
+        <PageHeader
+          extra={[
+            <Button key="1" type="primary" onClick={() => setVisible(true)}>
+              Tạo sản phẩm
+            </Button>,
+          ]}
+        ></PageHeader>
       </Row>
       <Table columns={columns} dataSource={ProductsData} />
-      <Modal visible={visible} width={1200} onCancel={() => setVisible(false)}>
-        <ProductsForm />
+      <Modal
+        visible={visible}
+        width={1200}
+        onCancel={() => setVisible(false)}
+        footer={null}
+      >
+        <ProductsForm handleCancel={() => setVisible(false)} />
       </Modal>
     </AdminContent>
   );
