@@ -3,7 +3,7 @@ import { getCookie } from "./utils";
 
 const callApi = function callApi(pathUrl, options) {
   const accessToken = getCookie("_accessToken");
-  const domain = "http://localhost:3000/";
+  const domain = "http://localhost:8001/";
   options.mode = "cors";
   if (accessToken) {
     options.headers = {

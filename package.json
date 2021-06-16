@@ -1,5 +1,5 @@
 {
-  "name": "web-on-thi-fe",
+  "name": "web-dashboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -34,7 +34,7 @@
     "sockjs-client": "^1.1.5"
   },
   "scripts": {
-    "dev": "set PORT=8000 && react-scripts start",
+    "dev": "PORT=3000 && react-scripts start",
     "build": "rm -rf build/ && react-scripts build && npm run-script sw",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

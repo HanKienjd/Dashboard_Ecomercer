@@ -22,7 +22,7 @@ const columns = [
   },
 ];
 
-const QuestionList = (props) => {
+const AdvantismentList = (props) => {
   const [DataListCategory, setDataListCategory] = useState();
   const [showButton, setShowButton] = useState(false);
   const [RowId, setRowId] = useState();
@@ -103,4 +103,4 @@ const QuestionList = (props) => {
   );
 };
 
-export default withRouter(QuestionList);
+export default withRouter(AdvantismentList);
