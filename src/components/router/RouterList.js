@@ -8,7 +8,7 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-
+import { getCookie } from "actions/common/utils";
 import Home from "../body/Home";
 import Register from "../body/Register";
 import UserInfo from "../body/user/UserInfo";
@@ -19,14 +19,20 @@ import ChangePassword from "components/body/account/ChangePassword";
 import AdminHome from "components/body/admin/AdminHome";
 import HistoryList from "components/body/history/HistoryList";
 import CategoryList from "components/body/admin/category/CategoryList";
+import CategoryForm from "components/body/admin/category/CategoryForm";
 import ProductsList from "components/body/admin/products/ProductsList";
 class RouterList extends React.Component {
   componentDidMount() {
     this.props.init();
   }
+
   render() {
+    const accessToken = getCookie("_accessToken");
     return (
       <Switch>
+        <Route exact path="/">
+          {accessToken ? <Redirect to="/admin" /> : <Login />}
+        </Route>
         <Route exact path="/test" component={Test} />
         <Route exact path="/dang-ky" component={Register} />
         <Route exact path="/dang-nhap" component={Login} />
@@ -38,7 +44,12 @@ class RouterList extends React.Component {
         <Route exact path="/admin" component={AdminHome} />
         <Route exact path="/admin/products/list" component={ProductsList} />
         <Route exact path="/admin/category/list" component={CategoryList} />
-        <Redirect from="/*" to="/" />
+        <Route exact path="/admin/category/create" component={CategoryForm} />
+        <Route
+          exact
+          path="/admin/category/detail/:id"
+          component={CategoryForm}
+        />
       </Switch>
     );
   }

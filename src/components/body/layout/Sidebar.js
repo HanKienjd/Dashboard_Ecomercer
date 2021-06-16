@@ -95,7 +95,7 @@ const SideBar = () => {
           <li className="nav-item">
             <a className="nav-link" href="/admin/category/list">
               <i className="far fa-list-alt"></i>
-              Quản lý danh mục sản phẩm
+              Quản lý chuyên mục sản phẩm
             </a>
           </li>
         </ul>

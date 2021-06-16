@@ -23,7 +23,7 @@ export const login = (email, password) => (dispatch, getState) => {
         setCookie("_accessToken", accessToken, 4);
         dispatch(init());
         window.noti.success("Đăng nhập thành công");
-        window.location.pathname = "/";
+        window.location.pathname = "/admin";
       }
       if (code === 400) {
         window.noti.error("Tài khoản hoặc mật khẩu không đúng");
