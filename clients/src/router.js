@@ -14,9 +14,9 @@ const RouterList = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Router path="/gioi-thieu" component={Intro} />
-      <Router path="/tin-tuc" component={News} />
-      <Router path="/lien-he" component={Contact} />
+      <Route path="/gioi-thieu" component={Intro} />
+      <Route path="/tin-tuc" component={News} />
+      <Route path="/lien-he" component={Contact} />
     </Switch>
   );
 };
