@@ -39,12 +39,12 @@ export default function News() {
         </div>
       </div>
       <div>
-        <span className="icon"><img src="./VGA Delta Fruits - Tin Tức_files/place.png" alt="Số 20, Ngõ 118, ngách 8, hẻm 1 Nguyễn Khánh Toàn" /></span>
+        <span className="icon"><img src="../../../public/images/place.png" alt="Số 20, Ngõ 118, ngách 8, hẻm 1 Nguyễn Khánh Toàn" /></span>
         <div className="fright"><span>Số 20, Ngõ 118, ngách 8, hẻm 1 Nguyễn
             Khánh Toàn</span></div>
       </div>
       <div>
-        <span className="icon"><img src="./VGA Delta Fruits - Tin Tức_files/email.png" alt="contact@vgasoft.vn" /></span>
+        <span className="icon"><img src="../../../public/images/email.png" alt="contact@vgasoft.vn" /></span>
         <div className="fright"><a href="mailto:deltawebltd@gmail.com">contact@vgasoft.vn</a>
         </div>
       </div>

@@ -42,7 +42,7 @@ const Home = () => {
                         <div className="item_product_main border item_product_main_relative">
                           <div className="item">
                             <div className="product-box product-item-main dealtop" data-time="9/18/2019 10:30:00">
-                              <div className="product-thumbnail"><a className="image_thumb p_img dealimg" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1435" title="Xoài Thái Ngọt"><img src="./VGA Delta Fruits_files/838adbb627950214b9b4a02a56aed3de64ea9299.jpg" alt="Xoài Thái Ngọt" /></a><a data-toggle="tooltip" data-handle="xoai-thai-ngot" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                              <div className="product-thumbnail"><a className="image_thumb p_img dealimg" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1435" title="Xoài Thái Ngọt"><img src="../../../public/images/xoai.jpg" alt="Xoài Thái Ngọt" /></a><a data-toggle="tooltip" data-handle="xoai-thai-ngot" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                                 <div className="saleright"><span>-15%</span></div>
                                 <div className="product-action clearfix">
                                   <form className="variants form-nut-grid">
@@ -78,7 +78,7 @@ const Home = () => {
                         <div className="item_product_main border item_product_main_relative">
                           <div className="item">
                             <div className="product-box product-item-main dealtop" data-time="9/18/2019 10:30:00">
-                              <div className="product-thumbnail"><a className="image_thumb p_img dealimg" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1437" title="Cam ngọt hàm yên"><img src="./VGA Delta Fruits_files/cam_my_ruot_vang_khong_hat.jpg" alt="Cam ngọt hàm yên" /></a><a data-toggle="tooltip" data-handle="xoai-thai-ngot" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                              <div className="product-thumbnail"><a className="image_thumb p_img dealimg" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1437" title="Cam ngọt hàm yên"><img src="../../../public/images/cam_my_ruot_vang_khong_hat.jpg" alt="Cam ngọt hàm yên" /></a><a data-toggle="tooltip" data-handle="xoai-thai-ngot" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                                 <div className="saleright"><span>-1%</span></div>
                                 <div className="product-action clearfix">
                                   <form className="variants form-nut-grid">
@@ -114,7 +114,7 @@ const Home = () => {
                         <div className="item_product_main border item_product_main_relative">
                           <div className="item">
                             <div className="product-box product-item-main dealtop" data-time="9/18/2019 10:30:00">
-                              <div className="product-thumbnail"><a className="image_thumb p_img dealimg" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1441" title="Nho mĩ nhập khẩu"><img src="./VGA Delta Fruits_files/747a454c2d82b0b58eaa2b27ba5d7578.jpg" alt="Nho mĩ nhập khẩu" /></a><a data-toggle="tooltip" data-handle="xoai-thai-ngot" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                              <div className="product-thumbnail"><a className="image_thumb p_img dealimg" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1441" title="Nho mĩ nhập khẩu"><img src="../../../public/images/nho-my.jpg" alt="Nho mĩ nhập khẩu" /></a><a data-toggle="tooltip" data-handle="xoai-thai-ngot" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                                 <div className="product-action clearfix">
                                   <form className="variants form-nut-grid">
                                     <div className="group_action"><input type="hidden" name="variantId" /><a data-toggle="tooltip" className="btn-buy firstb btn-cart button_35 left-to muangay add_to_cart" data-original-title="Mua ngay"><i className="fa fa-shopping-basket" />Thêm
@@ -174,7 +174,7 @@ const Home = () => {
                             <div className="owl-item active" style={{width: '385px'}}>
                               <div className="item_product_main itemcustome best_sale">
                                 <div className="product-box product-item-main product-main-list-mini">
-                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Xoài Thái Ngọt" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1435"><img src="./VGA Delta Fruits_files/838adbb627950214b9b4a02a56aed3de64ea9299.jpg" alt="Xoài Thái Ngọt" /></a></div>
+                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Xoài Thái Ngọt" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1435"><img src="../../../public/images/xoai.jpg" alt="Xoài Thái Ngọt" /></a></div>
                                   <div className="product-info product-bottom">
                                     <h3 className="product-name"><a href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1435" title="Xoài Thái Ngọt">Xoài Thái
                                         Ngọt</a></h3>
@@ -186,7 +186,7 @@ const Home = () => {
                                   </div>
                                 </div>
                                 <div className="product-box product-item-main product-main-list-mini">
-                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Dưa vàng loại to" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1438"><img src="./VGA Delta Fruits_files/cantaloupe.jpg" alt="Dưa vàng loại to" /></a>
+                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Dưa vàng loại to" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1438"><img src="../../../public/images/cantaloupe.jpg" alt="Dưa vàng loại to" /></a>
                                   </div>
                                   <div className="product-info product-bottom">
                                     <h3 className="product-name"><a href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1438" title="Dưa vàng loại to">Dưa
@@ -203,7 +203,7 @@ const Home = () => {
                             <div className="owl-item active" style={{width: '385px'}}>
                               <div className="item_product_main itemcustome best_sale">
                                 <div className="product-box product-item-main product-main-list-mini">
-                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Kiwi nhập khẩu" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1439"><img src="./VGA Delta Fruits_files/kiwi_xanh_master.jpg" alt="Kiwi nhập khẩu" /></a></div>
+                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Kiwi nhập khẩu" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1439"><img src="../../../public/images/kiwi_xanh_master.jpg" alt="Kiwi nhập khẩu" /></a></div>
                                   <div className="product-info product-bottom">
                                     <h3 className="product-name"><a href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1439" title="Kiwi nhập khẩu">Kiwi nhập
                                         khẩu</a></h3>
@@ -215,7 +215,7 @@ const Home = () => {
                                   </div>
                                 </div>
                                 <div className="product-box product-item-main product-main-list-mini">
-                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bơ booth" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1459"><img src="./VGA Delta Fruits_files/11.jpg" alt="Bơ booth" /></a></div>
+                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bơ booth" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1459"><img src="../../../public/images/11.jpg" alt="Bơ booth" /></a></div>
                                   <div className="product-info product-bottom">
                                     <h3 className="product-name"><a href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1459" title="Bơ booth">Bơ booth</a>
                                     </h3>
@@ -231,7 +231,7 @@ const Home = () => {
                             <div className="owl-item" style={{width: '385px'}}>
                               <div className="item_product_main itemcustome best_sale">
                                 <div className="product-box product-item-main product-main-list-mini">
-                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bí đỏ giống Nhật" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1461"><img src="./VGA Delta Fruits_files/13.jpg" alt="Bí đỏ giống Nhật" /></a>
+                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bí đỏ giống Nhật" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1461"><img src="../../../public/images/13.jpg" alt="Bí đỏ giống Nhật" /></a>
                                   </div>
                                   <div className="product-info product-bottom">
                                     <h3 className="product-name"><a href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1461" title="Bí đỏ giống Nhật">Bí đỏ
@@ -244,7 +244,7 @@ const Home = () => {
                                   </div>
                                 </div>
                                 <div className="product-box product-item-main product-main-list-mini">
-                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bí Nhật Non" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1462"><img src="./VGA Delta Fruits_files/14.jpg" alt="Bí Nhật Non" /></a></div>
+                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bí Nhật Non" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1462"><img src="../../../public/images/14.jpg" alt="Bí Nhật Non" /></a></div>
                                   <div className="product-info product-bottom">
                                     <h3 className="product-name"><a href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1462" title="Bí Nhật Non">Bí Nhật
                                         Non</a></h3>
@@ -260,7 +260,7 @@ const Home = () => {
                             <div className="owl-item" style={{width: '385px'}}>
                               <div className="item_product_main itemcustome best_sale">
                                 <div className="product-box product-item-main product-main-list-mini">
-                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bạc Hà" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1472"><img src="./VGA Delta Fruits_files/chanh_giay.jpg" alt="Bạc Hà" /></a></div>
+                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bạc Hà" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1472"><img src="../../../public/images/chanh_giay.jpg" alt="Bạc Hà" /></a></div>
                                   <div className="product-info product-bottom">
                                     <h3 className="product-name"><a href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1472" title="Bạc Hà">Bạc Hà</a></h3>
                                     <div className="blockprice">
@@ -271,7 +271,7 @@ const Home = () => {
                                   </div>
                                 </div>
                                 <div className="product-box product-item-main product-main-list-mini">
-                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bắp Mỹ" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1473"><img src="./VGA Delta Fruits_files/bap_my.png" alt="Bắp Mỹ" /></a></div>
+                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bắp Mỹ" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1473"><img src="../../../public/images/bap_my.png" alt="Bắp Mỹ" /></a></div>
                                   <div className="product-info product-bottom">
                                     <h3 className="product-name"><a href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1473" title="Bắp Mỹ">Bắp Mỹ</a></h3>
                                     <div className="blockprice">
@@ -286,7 +286,7 @@ const Home = () => {
                             <div className="owl-item" style={{width: '385px'}}>
                               <div className="item_product_main itemcustome best_sale">
                                 <div className="product-box product-item-main product-main-list-mini">
-                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bí Ngòi Xanh" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1474"><img src="./VGA Delta Fruits_files/bi_ngoi_xanh.png" alt="Bí Ngòi Xanh" /></a></div>
+                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bí Ngòi Xanh" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1474"><img src="../../../public/images/bi_ngoi_xanh.png" alt="Bí Ngòi Xanh" /></a></div>
                                   <div className="product-info product-bottom">
                                     <h3 className="product-name"><a href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1474" title="Bí Ngòi Xanh">Bí Ngòi
                                         Xanh</a></h3>
@@ -298,7 +298,7 @@ const Home = () => {
                                   </div>
                                 </div>
                                 <div className="product-box product-item-main product-main-list-mini">
-                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bí Hồ Lô" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1476"><img src="./VGA Delta Fruits_files/bi_do_ho_lo.jpg" alt="Bí Hồ Lô" /></a></div>
+                                  <div className="product-thumbnail"><a data-toggle="tooltip" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a><a className="image_thumb p_img" title="Bí Hồ Lô" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1476"><img src="../../../public/images/bi_do_ho_lo.jpg" alt="Bí Hồ Lô" /></a></div>
                                   <div className="product-info product-bottom">
                                     <h3 className="product-name"><a href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1476" title="Bí Hồ Lô">Bí Hồ Lô</a>
                                     </h3>
@@ -324,7 +324,7 @@ const Home = () => {
                       </div>
                     </div>
                     <div className="section">
-                      <figure className="img_effect"><a href="https://thucphamsach.vgasoft.vn/#" title="Mua ngay giá tốt quá trời"><img className="img-responsive center-base" src="./VGA Delta Fruits_files/banner_bestsale.png" alt="Mua ngay giá tốt quá trời" /></a></figure>
+                      <figure className="img_effect"><a href="https://thucphamsach.vgasoft.vn/#" title="Mua ngay giá tốt quá trời"><img className="img-responsive center-base" src="../../../public/images/banner_bestsale.png" alt="Mua ngay giá tốt quá trời" /></a></figure>
                     </div>
                     <div id="quick-view-product" className="quickview-product" style={{display: 'none'}}>
                       <div className="quickview-overlay fancybox-overlay fancybox-overlay-fixed">
@@ -341,7 +341,7 @@ const Home = () => {
                                       <div className="owl-stage-outer">
                                         <div className="owl-stage" style={{transform: 'translate3d(0px, 0px, 0px)', transition: 'all 0s ease 0s', width: '0px'}}>
                                           <div className="owl-item active" style={{width: '0px'}}>
-                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Xoài Thái Ngọt" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="./VGA Delta Fruits_files/838adbb627950214b9b4a02a56aed3de64ea9299.jpg" alt="Xoài Thái Ngọt" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
+                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Xoài Thái Ngọt" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="../../../public/images/xoai.jpg" alt="Xoài Thái Ngọt" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
                                             </li>
                                           </div>
                                         </div>
@@ -565,7 +565,7 @@ const Home = () => {
                                       <div className="owl-stage-outer">
                                         <div className="owl-stage" style={{transform: 'translate3d(0px, 0px, 0px)', transition: 'all 0s ease 0s', width: '0px'}}>
                                           <div className="owl-item active" style={{width: '0px'}}>
-                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bơ booth" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="./VGA Delta Fruits_files/11.jpg" alt="Bơ booth" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
+                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bơ booth" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="../../../public/images/11.jpg" alt="Bơ booth" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
                                             </li>
                                           </div>
                                         </div>
@@ -641,7 +641,7 @@ const Home = () => {
                                       <div className="owl-stage-outer">
                                         <div className="owl-stage" style={{transform: 'translate3d(0px, 0px, 0px)', transition: 'all 0s ease 0s', width: '0px'}}>
                                           <div className="owl-item active" style={{width: '0px'}}>
-                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bí đỏ giống Nhật" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="./VGA Delta Fruits_files/13.jpg" alt="Bí đỏ giống Nhật" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
+                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bí đỏ giống Nhật" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="../../../public/images/13.jpg" alt="Bí đỏ giống Nhật" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
                                             </li>
                                           </div>
                                         </div>
@@ -714,7 +714,7 @@ const Home = () => {
                                       <div className="owl-stage-outer">
                                         <div className="owl-stage" style={{transform: 'translate3d(0px, 0px, 0px)', transition: 'all 0s ease 0s', width: '0px'}}>
                                           <div className="owl-item active" style={{width: '0px'}}>
-                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bí Nhật Non" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="./VGA Delta Fruits_files/14.jpg" alt="Bí Nhật Non" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
+                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bí Nhật Non" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="../../../public/images/14.jpg" alt="Bí Nhật Non" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
                                             </li>
                                           </div>
                                         </div>
@@ -794,7 +794,7 @@ const Home = () => {
                                       <div className="owl-stage-outer">
                                         <div className="owl-stage" style={{transform: 'translate3d(0px, 0px, 0px)', transition: 'all 0s ease 0s', width: '0px'}}>
                                           <div className="owl-item active" style={{width: '0px'}}>
-                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bạc Hà" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="./VGA Delta Fruits_files/chanh_giay.jpg" alt="Bạc Hà" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
+                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bạc Hà" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="../../../public/images/chanh_giay.jpg" alt="Bạc Hà" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
                                             </li>
                                           </div>
                                         </div>
@@ -866,7 +866,7 @@ const Home = () => {
                                       <div className="owl-stage-outer">
                                         <div className="owl-stage" style={{transform: 'translate3d(0px, 0px, 0px)', transition: 'all 0s ease 0s', width: '0px'}}>
                                           <div className="owl-item active" style={{width: '0px'}}>
-                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bắp Mỹ" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="./VGA Delta Fruits_files/bap_my.png" alt="Bắp Mỹ" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
+                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bắp Mỹ" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="../../../public/images/bap_my.png" alt="Bắp Mỹ" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
                                             </li>
                                           </div>
                                         </div>
@@ -941,7 +941,7 @@ const Home = () => {
                                       <div className="owl-stage-outer">
                                         <div className="owl-stage" style={{transform: 'translate3d(0px, 0px, 0px)', transition: 'all 0s ease 0s', width: '0px'}}>
                                           <div className="owl-item active" style={{width: '0px'}}>
-                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bí Ngòi Xanh" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="./VGA Delta Fruits_files/bi_ngoi_xanh.png" alt="Bí Ngòi Xanh" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
+                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bí Ngòi Xanh" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="../../../public/images/bi_ngoi_xanh.png" alt="Bí Ngòi Xanh" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
                                             </li>
                                           </div>
                                         </div>
@@ -1019,7 +1019,7 @@ const Home = () => {
                                       <div className="owl-stage-outer">
                                         <div className="owl-stage" style={{transform: 'translate3d(0px, 0px, 0px)', transition: 'all 0s ease 0s', width: '0px'}}>
                                           <div className="owl-item active" style={{width: '0px'}}>
-                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bí Hồ Lô" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="./VGA Delta Fruits_files/bi_do_ho_lo.jpg" alt="Bí Hồ Lô" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
+                                            <li className="active"><a href="https://thucphamsach.vgasoft.vn/undefined" alt="Bí Hồ Lô" style={{maxWidth: '120px', maxHeight: '120px'}}><img src="../../../public/images/bi_do_ho_lo.jpg" alt="Bí Hồ Lô" style={{maxWidth: '120px', maxHeight: '120px'}} /></a>
                                             </li>
                                           </div>
                                         </div>
@@ -1096,14 +1096,14 @@ const Home = () => {
           <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div className="row">
               <div className="col-lg-12 col-md-12 col-sm-4 col-xs-12 itembaner">
-                <figure className="img_effect"><a title="Sản phẩm mới về"><img className="img-responsive center-base" src="./VGA Delta Fruits_files/banner_3.png" alt="Nho nhập khẩu" /></a>
+                <figure className="img_effect"><a title="Sản phẩm mới về"><img className="img-responsive center-base" src="../../../public/images/banner_3.png" alt="Nho nhập khẩu" /></a>
                 </figure>
               </div>
               <div className="col-lg-12 col-md-12 col-sm-4 col-xs-12 itembaner">
-                <figure className="img_effect"><a title="Sản phẩm mới về"><img className="img-responsive center-base" src="./VGA Delta Fruits_files/banner_2.png" alt="Sản phẩm mới về" /></a></figure>
+                <figure className="img_effect"><a title="Sản phẩm mới về"><img className="img-responsive center-base" src="../../../public/images/banner_2.png" alt="Sản phẩm mới về" /></a></figure>
               </div>
               <div className="col-lg-12 col-md-12 col-sm-4 col-xs-12 itembaner">
-                <figure className="img_effect"><a title="Sản phẩm mới về"><img className="img-responsive center-base" src="./VGA Delta Fruits_files/banner_1.png" alt="Sản phẩm mới về" /></a></figure>
+                <figure className="img_effect"><a title="Sản phẩm mới về"><img className="img-responsive center-base" src="../../../public/images/banner_1.png" alt="Sản phẩm mới về" /></a></figure>
               </div>
             </div>
           </div>
@@ -1122,7 +1122,7 @@ const Home = () => {
                             <div>
                               <div className="item_product_main itemcustome">
                                 <div className="product-box product-item-main product-item-compare">
-                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphambanchay/1434" title="Bắp cải xanh"><img src="./VGA Delta Fruits_files/index.jpeg" alt="Bắp cải xanh" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphambanchay/1434" title="Bắp cải xanh"><img src="../../../public/images/index.jpeg" alt="Bắp cải xanh" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                                     <div className="product-action clearfix">
                                       <form className="variants form-nut-grid">
                                         <div className="group_action"><a data-toggle="tooltip" className="btn-buy firstc btn-cart button_35 left-to" data-original-title="Chi tiết"><i className="fa fa-shopping-basket" />Thêm
@@ -1145,7 +1145,7 @@ const Home = () => {
                               </div>
                               <div className="item_product_main itemcustome">
                                 <div className="product-box product-item-main product-item-compare">
-                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1435" title="Xoài Thái Ngọt"><img src="./VGA Delta Fruits_files/838adbb627950214b9b4a02a56aed3de64ea9299.jpg" alt="Xoài Thái Ngọt" /></a>
+                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1435" title="Xoài Thái Ngọt"><img src="../../../public/images/xoai.jpg" alt="Xoài Thái Ngọt" /></a>
                                     <div className="saleright"><span>-19%</span>
                                     </div><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                                     <div className="product-action clearfix">
@@ -1174,7 +1174,7 @@ const Home = () => {
                             <div>
                               <div className="item_product_main itemcustome">
                                 <div className="product-box product-item-main product-item-compare">
-                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1436" title="Súp lơ tươi ngon"><img src="./VGA Delta Fruits_files/sup_lo_xanh_vietgap.jpg" alt="Súp lơ tươi ngon" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1436" title="Súp lơ tươi ngon"><img src="../../../public/images/sup_lo_xanh_vietgap.jpg" alt="Súp lơ tươi ngon" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                                     <div className="product-action clearfix">
                                       <form className="variants form-nut-grid">
                                         <div className="group_action"><a data-toggle="tooltip" className="btn-buy firstc btn-cart button_35 left-to" data-original-title="Chi tiết"><i className="fa fa-shopping-basket" />Thêm
@@ -1197,7 +1197,7 @@ const Home = () => {
                               </div>
                               <div className="item_product_main itemcustome">
                                 <div className="product-box product-item-main product-item-compare">
-                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1437" title="Cam ngọt hàm yên"><img src="./VGA Delta Fruits_files/cam_my_ruot_vang_khong_hat.jpg" alt="Cam ngọt hàm yên" /></a>
+                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1437" title="Cam ngọt hàm yên"><img src="../../../public/images/cam_my_ruot_vang_khong_hat.jpg" alt="Cam ngọt hàm yên" /></a>
                                     <div className="saleright"><span>-2%</span>
                                     </div><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                                     <div className="product-action clearfix">
@@ -1226,7 +1226,7 @@ const Home = () => {
                             <div>
                               <div className="item_product_main itemcustome">
                                 <div className="product-box product-item-main product-item-compare">
-                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1438" title="Dưa vàng loại to"><img src="./VGA Delta Fruits_files/cantaloupe.jpg" alt="Dưa vàng loại to" /></a>
+                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1438" title="Dưa vàng loại to"><img src="../../../public/images/cantaloupe.jpg" alt="Dưa vàng loại to" /></a>
                                     <div className="saleright"><span>-17%</span>
                                     </div><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                                     <div className="product-action clearfix">
@@ -1251,7 +1251,7 @@ const Home = () => {
                               </div>
                               <div className="item_product_main itemcustome">
                                 <div className="product-box product-item-main product-item-compare">
-                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1439" title="Kiwi nhập khẩu"><img src="./VGA Delta Fruits_files/kiwi_xanh_master.jpg" alt="Kiwi nhập khẩu" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1439" title="Kiwi nhập khẩu"><img src="../../../public/images/kiwi_xanh_master.jpg" alt="Kiwi nhập khẩu" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                                     <div className="product-action clearfix">
                                       <form className="variants form-nut-grid">
                                         <div className="group_action"><a data-toggle="tooltip" className="btn-buy firstc btn-cart button_35 left-to" data-original-title="Chi tiết"><i className="fa fa-shopping-basket" />Thêm
@@ -1278,7 +1278,7 @@ const Home = () => {
                             <div>
                               <div className="item_product_main itemcustome">
                                 <div className="product-box product-item-main product-item-compare">
-                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1440" title="Cà chua nhập khẩu"><img src="./VGA Delta Fruits_files/hinh_anh_qua_ca_chua_2125.jpg" alt="Cà chua nhập khẩu" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1440" title="Cà chua nhập khẩu"><img src="../../../public/images/hinh_anh_qua_ca_chua_2125.jpg" alt="Cà chua nhập khẩu" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                                     <div className="product-action clearfix">
                                       <form className="variants form-nut-grid">
                                         <div className="group_action"><a data-toggle="tooltip" className="btn-buy firstc btn-cart button_35 left-to" data-original-title="Chi tiết"><i className="fa fa-shopping-basket" />Thêm
@@ -1301,7 +1301,7 @@ const Home = () => {
                               </div>
                               <div className="item_product_main itemcustome">
                                 <div className="product-box product-item-main product-item-compare">
-                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1441" title="Nho mĩ nhập khẩu"><img src="./VGA Delta Fruits_files/747a454c2d82b0b58eaa2b27ba5d7578.jpg" alt="Nho mĩ nhập khẩu" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                                  <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1441" title="Nho mĩ nhập khẩu"><img src="../../../public/images/nho-my.jpg" alt="Nho mĩ nhập khẩu" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/#" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                                     <div className="product-action clearfix">
                                       <form className="variants form-nut-grid">
                                         <div className="group_action"><a data-toggle="tooltip" className="btn-buy firstc btn-cart button_35 left-to" data-original-title="Chi tiết"><i className="fa fa-shopping-basket" />Thêm
@@ -1359,7 +1359,7 @@ const Home = () => {
                   <div className="owl-item active" style={{width: '234px'}}>
                     <div className="item_product_main itemcustome">
                       <div className="product-box product-item-main product-item-compare">
-                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphambanchay/1434" title="Bắp cải xanh"><img src="./VGA Delta Fruits_files/index.jpeg" alt="Bắp cải xanh" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/sanphambanchay/1434" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphambanchay/1434" title="Bắp cải xanh"><img src="../../../public/images/index.jpeg" alt="Bắp cải xanh" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/sanphambanchay/1434" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                           <div className="product-action clearfix">
                             <form className="variants form-nut-grid">
                               <div className="group_action"><a data-toggle="tooltip" className="btn-buy firstc btn-cart button_35 left-to" data-original-title="Chi tiết"><i className="fa fa-shopping-basket" />Mua
@@ -1382,7 +1382,7 @@ const Home = () => {
                   <div className="owl-item active" style={{width: '234px'}}>
                     <div className="item_product_main itemcustome">
                       <div className="product-box product-item-main product-item-compare">
-                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1436" title="Súp lơ tươi ngon"><img src="./VGA Delta Fruits_files/sup_lo_xanh_vietgap.jpg" alt="Súp lơ tươi ngon" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1436" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1436" title="Súp lơ tươi ngon"><img src="../../../public/images/sup_lo_xanh_vietgap.jpg" alt="Súp lơ tươi ngon" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1436" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                           <div className="product-action clearfix">
                             <form className="variants form-nut-grid">
                               <div className="group_action"><a data-toggle="tooltip" className="btn-buy firstc btn-cart button_35 left-to" data-original-title="Chi tiết"><i className="fa fa-shopping-basket" />Mua
@@ -1405,7 +1405,7 @@ const Home = () => {
                   <div className="owl-item active" style={{width: '234px'}}>
                     <div className="item_product_main itemcustome">
                       <div className="product-box product-item-main product-item-compare">
-                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1437" title="Cam ngọt hàm yên"><img src="./VGA Delta Fruits_files/cam_my_ruot_vang_khong_hat.jpg" alt="Cam ngọt hàm yên" /></a>
+                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1437" title="Cam ngọt hàm yên"><img src="../../../public/images/cam_my_ruot_vang_khong_hat.jpg" alt="Cam ngọt hàm yên" /></a>
                           <div className="saleright"><span>-2%</span></div><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/hoaquakhac/1437" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                           <div className="product-action clearfix">
                             <form className="variants form-nut-grid">
@@ -1429,7 +1429,7 @@ const Home = () => {
                   <div className="owl-item active" style={{width: '234px'}}>
                     <div className="item_product_main itemcustome">
                       <div className="product-box product-item-main product-item-compare">
-                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1438" title="Dưa vàng loại to"><img src="./VGA Delta Fruits_files/cantaloupe.jpg" alt="Dưa vàng loại to" /></a>
+                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1438" title="Dưa vàng loại to"><img src="../../../public/images/cantaloupe.jpg" alt="Dưa vàng loại to" /></a>
                           <div className="saleright"><span>-17%</span></div><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1438" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                           <div className="product-action clearfix">
                             <form className="variants form-nut-grid">
@@ -1453,7 +1453,7 @@ const Home = () => {
                   <div className="owl-item active" style={{width: '234px'}}>
                     <div className="item_product_main itemcustome">
                       <div className="product-box product-item-main product-item-compare">
-                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1439" title="Kiwi nhập khẩu"><img src="./VGA Delta Fruits_files/kiwi_xanh_master.jpg" alt="Kiwi nhập khẩu" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1439" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1439" title="Kiwi nhập khẩu"><img src="../../../public/images/kiwi_xanh_master.jpg" alt="Kiwi nhập khẩu" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1439" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                           <div className="product-action clearfix">
                             <form className="variants form-nut-grid">
                               <div className="group_action"><a data-toggle="tooltip" className="btn-buy firstc btn-cart button_35 left-to" data-original-title="Chi tiết"><i className="fa fa-shopping-basket" />Mua
@@ -1476,7 +1476,7 @@ const Home = () => {
                   <div className="owl-item" style={{width: '234px'}}>
                     <div className="item_product_main itemcustome">
                       <div className="product-box product-item-main product-item-compare">
-                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1441" title="Nho mĩ nhập khẩu"><img src="./VGA Delta Fruits_files/747a454c2d82b0b58eaa2b27ba5d7578.jpg" alt="Nho mĩ nhập khẩu" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1441" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1441" title="Nho mĩ nhập khẩu"><img src="../../../public/images/nho-my.jpg" alt="Nho mĩ nhập khẩu" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/traicaynhapkhau/1441" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                           <div className="product-action clearfix">
                             <form className="variants form-nut-grid">
                               <div className="group_action"><a data-toggle="tooltip" className="btn-buy firstc btn-cart button_35 left-to" data-original-title="Chi tiết"><i className="fa fa-shopping-basket" />Mua
@@ -1499,7 +1499,7 @@ const Home = () => {
                   <div className="owl-item" style={{width: '234px'}}>
                     <div className="item_product_main itemcustome">
                       <div className="product-box product-item-main product-item-compare">
-                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1442" title="Cà chua Đà Lạt"><img src="./VGA Delta Fruits_files/al7.png" alt="Cà chua Đà Lạt" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1442" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1442" title="Cà chua Đà Lạt"><img src="../../../public/images/al7.png" alt="Cà chua Đà Lạt" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/sanphamnoibat/1442" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                           <div className="product-action clearfix">
                             <form className="variants form-nut-grid">
                               <div className="group_action"><a data-toggle="tooltip" className="btn-buy firstc btn-cart button_35 left-to" data-original-title="Chi tiết"><i className="fa fa-shopping-basket" />Mua
@@ -1522,7 +1522,7 @@ const Home = () => {
                   <div className="owl-item" style={{width: '234px'}}>
                     <div className="item_product_main itemcustome">
                       <div className="product-box product-item-main product-item-compare">
-                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1461" title="Bí đỏ giống Nhật"><img src="./VGA Delta Fruits_files/13.jpg" alt="Bí đỏ giống Nhật" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1461" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
+                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1461" title="Bí đỏ giống Nhật"><img src="../../../public/images/13.jpg" alt="Bí đỏ giống Nhật" /></a><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1461" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                           <div className="product-action clearfix">
                             <form className="variants form-nut-grid">
                               <div className="group_action"><a data-toggle="tooltip" className="btn-buy firstc btn-cart button_35 left-to" data-original-title="Chi tiết"><i className="fa fa-shopping-basket" />Mua
@@ -1545,7 +1545,7 @@ const Home = () => {
                   <div className="owl-item" style={{width: '234px'}}>
                     <div className="item_product_main itemcustome">
                       <div className="product-box product-item-main product-item-compare">
-                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1473" title="Bắp Mỹ"><img src="./VGA Delta Fruits_files/bap_my.png" alt="Bắp Mỹ" /></a>
+                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1473" title="Bắp Mỹ"><img src="../../../public/images/bap_my.png" alt="Bắp Mỹ" /></a>
                           <div className="saleright"><span>-16%</span></div><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/raucunhapkhau/1473" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                           <div className="product-action clearfix">
                             <form className="variants form-nut-grid">
@@ -1569,7 +1569,7 @@ const Home = () => {
                   <div className="owl-item" style={{width: '234px'}}>
                     <div className="item_product_main itemcustome">
                       <div className="product-box product-item-main product-item-compare">
-                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1476" title="Bí Hồ Lô"><img src="./VGA Delta Fruits_files/bi_do_ho_lo.jpg" alt="Bí Hồ Lô" /></a>
+                        <div className="product-thumbnail"><a className="image_thumb p_img" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1476" title="Bí Hồ Lô"><img src="../../../public/images/bi_do_ho_lo.jpg" alt="Bí Hồ Lô" /></a>
                           <div className="saleright"><span>-21%</span></div><a data-toggle="tooltip" href="https://thucphamsach.vgasoft.vn/product/sanphamkhuyenmai/1476" data-handle="bap-cai-xanh" className="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm" data-original-title="Xem nhanh"><i className="fa fa-eye" /></a>
                           <div className="product-action clearfix">
                             <form className="variants form-nut-grid">
@@ -1610,7 +1610,7 @@ const Home = () => {
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 itembannerhover">
                 <div className="row">
                   <div className="col-lg-6 col-md-6 col-sm-5 hidden-xs">
-                    <div className="imgbanner getheight_banner"><a href="https://thucphamsach.vgasoft.vn/#"><img src="./VGA Delta Fruits_files/banner_vertical_2.png" alt="banner" /></a></div>
+                    <div className="imgbanner getheight_banner"><a href="https://thucphamsach.vgasoft.vn/#"><img src="../../../public/images/banner_vertical_2.png" alt="banner" /></a></div>
                   </div>
                   <div className="col-lg-6 col-md-6 col-sm-7 col-xs-12">
                     <div className="contentbanner contentb1">
@@ -1626,7 +1626,7 @@ const Home = () => {
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 itembannerhover">
                 <div className="row">
                   <div className="col-lg-6 col-md-6 col-sm-5 hidden-xs">
-                    <div className="imgbanner getheight_banner"><a href="https://thucphamsach.vgasoft.vn/#"><img src="./VGA Delta Fruits_files/banner_vertical_1.png" alt="banner" /></a></div>
+                    <div className="imgbanner getheight_banner"><a href="https://thucphamsach.vgasoft.vn/#"><img src="../../../public/images/banner_vertical_1.png" alt="banner" /></a></div>
                   </div>
                   <div className="col-lg-6 col-md-6 col-sm-7 col-xs-12">
                     <div className="contentbanner contentb2">
@@ -1663,7 +1663,7 @@ const Home = () => {
                         <div className="itemblog" style={{marginLeft: '30px'}}>
                           <div className="blog_index">
                             <div className="myblog">
-                              <div className="image-blog-left"><a href="https://thucphamsach.vgasoft.vn/tin-tuc-68/meo-chon-dua-hau-ngon-tram-qua-nhu-mot"><img className="lazyload loaded" src="./VGA Delta Fruits_files/dua_hau_41_800x600.jpg" title="Mẹo chọn dưa hấu ngon trăm quả như một" alt="Mẹo chọn dưa hấu ngon trăm quả như một" style={{height: '270px'}} /></a></div>
+                              <div className="image-blog-left"><a href="https://thucphamsach.vgasoft.vn/tin-tuc-68/meo-chon-dua-hau-ngon-tram-qua-nhu-mot"><img className="lazyload loaded" src="../../../public/images/dua_hau_41_800x600.jpg" title="Mẹo chọn dưa hấu ngon trăm quả như một" alt="Mẹo chọn dưa hấu ngon trăm quả như một" style={{height: '270px'}} /></a></div>
                               <div className="content_blog"><span className="time_post">Đăng bởi: <span className="name_">Mẹo chọn dưa hấu ngon trăm
                                     quả như một</span></span>
                                 <h3 className="h3"><a href="https://thucphamsach.vgasoft.vn/tin-tuc-68/meo-chon-dua-hau-ngon-tram-qua-nhu-mot" title="Mẹo chọn dưa hấu ngon trăm quả như một">Mẹo
@@ -1684,7 +1684,7 @@ const Home = () => {
                         <div className="itemblog" style={{marginLeft: '30px'}}>
                           <div className="blog_index">
                             <div className="myblog">
-                              <div className="image-blog-left"><a href="https://thucphamsach.vgasoft.vn/tin-tuc-68/chuyen-gia-huong-dan-chon-rau-cu-qua-an-toan"><img className="lazyload loaded" src="./VGA Delta Fruits_files/cach_nhan_biet_rau_an_toan_0.jpg" title="Chuyên gia hướng dẫn chọn rau, củ, quả an toàn" alt="Chuyên gia hướng dẫn chọn rau, củ, quả an toàn" style={{height: '270px'}} /></a></div>
+                              <div className="image-blog-left"><a href="https://thucphamsach.vgasoft.vn/tin-tuc-68/chuyen-gia-huong-dan-chon-rau-cu-qua-an-toan"><img className="lazyload loaded" src="../../../public/images/cach_nhan_biet_rau_an_toan_0.jpg" title="Chuyên gia hướng dẫn chọn rau, củ, quả an toàn" alt="Chuyên gia hướng dẫn chọn rau, củ, quả an toàn" style={{height: '270px'}} /></a></div>
                               <div className="content_blog"><span className="time_post">Đăng bởi: <span className="name_">Đào Quý
                                     Thương</span></span>
                                 <h3 className="h3"><a href="https://thucphamsach.vgasoft.vn/tin-tuc-68/chuyen-gia-huong-dan-chon-rau-cu-qua-an-toan" title="Chuyên gia hướng dẫn chọn rau, củ, quả an toàn">Chuyên
@@ -1705,7 +1705,7 @@ const Home = () => {
                         <div className="itemblog" style={{marginLeft: '30px'}}>
                           <div className="blog_index">
                             <div className="myblog">
-                              <div className="image-blog-left"><a href="https://thucphamsach.vgasoft.vn/tin-tuc-68/7-cach-chon-hoa-qua-tuoi-ngon-nhat"><img className="lazyload loaded" src="./VGA Delta Fruits_files/al1.png" title="7 Cách chọn hoa quả tươi ngon nhất" alt="7 Cách chọn hoa quả tươi ngon nhất" style={{height: '270px'}} /></a></div>
+                              <div className="image-blog-left"><a href="https://thucphamsach.vgasoft.vn/tin-tuc-68/7-cach-chon-hoa-qua-tuoi-ngon-nhat"><img className="lazyload loaded" src="../../../public/images/al1.png" title="7 Cách chọn hoa quả tươi ngon nhất" alt="7 Cách chọn hoa quả tươi ngon nhất" style={{height: '270px'}} /></a></div>
                               <div className="content_blog"><span className="time_post">Đăng bởi: <span className="name_">Han Kiên</span></span>
                                 <h3 className="h3"><a href="https://thucphamsach.vgasoft.vn/tin-tuc-68/7-cach-chon-hoa-qua-tuoi-ngon-nhat" title="7 Cách chọn hoa quả tươi ngon nhất">7
                                     Cách chọn hoa quả tươi ngon nhất</a>
@@ -1737,32 +1737,32 @@ const Home = () => {
           <div className="owl-stage" style={{transform: 'translate3d(0px, 0px, 0px)', transition: 'all 0s ease 0s', width: '1520px'}}>
             <div className="owl-item active" style={{width: '253.2px'}}>
               <div className="item item_js_width">
-                <div className=" al-item relative"><img src="./VGA Delta Fruits_files/al7(1).png" className="lazyload loaded" /></div>
+                <div className=" al-item relative"><img src="../../../public/images/al7(1).png" className="lazyload loaded" /></div>
               </div>
             </div>
             <div className="owl-item active" style={{width: '253.2px'}}>
               <div className="item item_js_width">
-                <div className=" al-item relative"><img src="./VGA Delta Fruits_files/al2.png" className="lazyload loaded" /></div>
+                <div className=" al-item relative"><img src="../../../public/images/al2.png" className="lazyload loaded" /></div>
               </div>
             </div>
             <div className="owl-item active" style={{width: '253.2px'}}>
               <div className="item item_js_width">
-                <div className=" al-item relative"><img src="./VGA Delta Fruits_files/al5.png" className="lazyload loaded" /></div>
+                <div className=" al-item relative"><img src="../../../public/images/al5.png" className="lazyload loaded" /></div>
               </div>
             </div>
             <div className="owl-item active" style={{width: '253.2px'}}>
               <div className="item item_js_width">
-                <div className=" al-item relative"><img src="./VGA Delta Fruits_files/al3.png" className="lazyload loaded" /></div>
+                <div className=" al-item relative"><img src="../../../public/images/al3.png" className="lazyload loaded" /></div>
               </div>
             </div>
             <div className="owl-item active" style={{width: '253.2px'}}>
               <div className="item item_js_width">
-                <div className=" al-item relative"><img src="./VGA Delta Fruits_files/al4.png" className="lazyload loaded" /></div>
+                <div className=" al-item relative"><img src="../../../public/images/al4.png" className="lazyload loaded" /></div>
               </div>
             </div>
             <div className="owl-item active" style={{width: '253.2px'}}>
               <div className="item item_js_width">
-                <div className=" al-item relative"><img src="./VGA Delta Fruits_files/al6.png" className="lazyload loaded" /></div>
+                <div className=" al-item relative"><img src="../../../public/images/al6.png" className="lazyload loaded" /></div>
               </div>
             </div>
           </div>
@@ -1771,12 +1771,12 @@ const Home = () => {
         <div className="owl-dots disabled"><button role="button" className="owl-dot active"><span /></button></div>
       </div>
       <div>
-        <span className="icon"><img src="./VGA Delta Fruits_files/place.png" alt="Số 20, Ngõ 118, ngách 8, hẻm 1 Nguyễn Khánh Toàn" /></span>
+        <span className="icon"><img src="../../../public/images/place.png" alt="Số 20, Ngõ 118, ngách 8, hẻm 1 Nguyễn Khánh Toàn" /></span>
         <div className="fright"><span>Số 20, Ngõ 118, ngách 8, hẻm 1 Nguyễn
             Khánh Toàn</span></div>
       </div>
       <div>
-        <span className="icon"><img src="./VGA Delta Fruits_files/email.png" alt="contact@vgasoft.vn" /></span>
+        <span className="icon"><img src="../../../public/images/email.png" alt="contact@vgasoft.vn" /></span>
         <div className="fright"><a href="mailto:deltawebltd@gmail.com">contact@vgasoft.vn</a>
         </div>
       </div>
