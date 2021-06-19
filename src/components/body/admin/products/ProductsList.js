@@ -1,70 +1,62 @@
 import React, { useState, useEffect } from "react";
-import { Col, Table, Tag, Space, Button, Row, Modal, PageHeader } from "antd";
+import { Table as Tables, Button, Modal, PageHeader, notification } from "antd";
 import ProductsForm from "./ProductsForm";
 import AdminContent from "components/body/layout/AdminContent";
 import callApi from "actions/common/callApi";
+import "./style.scss";
 const columns = [
   {
     title: "Ảnh sản phẩm",
     dataIndex: "image",
     key: "image",
+    render: (value, row, column) => {
+      return <img src={value} alt="image" className="image-responsive" />;
+    },
   },
   {
     title: "Tên sản phẩm",
     dataIndex: "name",
     key: "name",
-    render: (text) => <a>{text}</a>,
   },
   {
     title: "Giá tiền",
-    dataIndex: "price",
-    key: "price",
+    dataIndex: "buying_price",
+    key: "buying_price",
+  },
+  {
+    title: "Giá sale",
+    dataIndex: "selling_price",
+    key: "selling_price",
+  },
+  {
+    title: "Số lượng",
+    dataIndex: "quantity",
+    key: "quantity",
   },
   {
     title: "Nội dung",
-    dataIndex: "content",
-    key: "content",
+    dataIndex: "description",
+    key: "description",
   },
   {
-    title: "Action",
-    key: "status",
-    dataIndex: "status",
+    title: "Chuyên mục",
+    key: "category_id",
+    dataIndex: "category_id",
   },
 ];
 
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    price: 32,
-    content: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
-    status: "Còn hàng",
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    price: 42,
-    content: "London No. 1 Lake Park",
-    tags: ["loser"],
-    status: "Hết hàng",
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    price: 32,
-    content: "Sidney No. 1 Lake Park",
-    tags: ["cool", "teacher"],
-    status: "còn hàng",
-  },
-];
-
+const PAGE_SIZE = 10;
 const ProductsList = () => {
   const [visible, setVisible] = useState(false);
   const [ProductsData, setProductsData] = useState();
+  const [page, setPage] = useState(1);
+  const [showButton, setShowButton] = useState(false);
+  const [rowId, setRowId] = useState();
 
   const fetchDataProducts = () => {
-    return callApi("api/products?limit=10&page=1", { method: "GET" })
+    return callApi(`api/products?limit=${PAGE_SIZE}&page=${page}`, {
+      method: "GET",
+    })
       .then(({ data, code, message }) => {
         if (data && code == 200) {
           setProductsData(data.products);
@@ -75,22 +67,58 @@ const ProductsList = () => {
       });
   };
 
+  const delDataItems = () => {
+    try {
+      callApi(`api/products/${rowId}`, { method: "DELETE" }).then(
+        ({ data, code, message }) => {
+          if (data && code === 204) {
+            notification.open({
+              message: "Xóa thành công",
+            });
+            fetchDataProducts();
+          }
+        }
+      );
+    } catch (error) {
+      console.log("CategoryList => delDataItems", error);
+    }
+  };
+
   useEffect(() => {
     fetchDataProducts();
   }, []);
 
+  const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+      handleRowSelection(selectedRows[0].id);
+    },
+  };
+
+  const handleRowSelection = (value) => {
+    setRowId(value);
+    setShowButton(true);
+  };
+
   return (
     <AdminContent>
-      <Row gutter={[16, 32]} justify="end">
-        <PageHeader
-          extra={[
-            <Button key="1" type="primary" onClick={() => setVisible(true)}>
-              Tạo sản phẩm
-            </Button>,
-          ]}
-        ></PageHeader>
-      </Row>
-      <Table columns={columns} dataSource={ProductsData} />
+      <PageHeader
+        extra={[
+          <Button type="primary" hidden={!showButton} onClick={delDataItems}>
+            Xóa
+          </Button>,
+          <Button key="1" type="primary" onClick={() => setVisible(true)}>
+            Tạo sản phẩm
+          </Button>,
+        ]}
+      />
+      <Tables
+        rowSelection={{
+          type: "radio",
+          ...rowSelection,
+        }}
+        columns={columns}
+        dataSource={ProductsData}
+      />
       <Modal
         visible={visible}
         width={1200}

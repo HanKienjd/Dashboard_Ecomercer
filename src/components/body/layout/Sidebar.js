@@ -72,6 +72,17 @@ const SideBar = () => {
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">
+              Quản lý quảng cáo
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/admin/category/list">
+              <i className="far fa-list-alt"></i>
+              Quản lý chuyên mục sản phẩm
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/admin/user/list">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={24}
@@ -89,13 +100,7 @@ const SideBar = () => {
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg>
-              Quản lý quảng cáo
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/admin/category/list">
-              <i className="far fa-list-alt"></i>
-              Quản lý chuyên mục sản phẩm
+              Quản lý người dùng
             </a>
           </li>
         </ul>

@@ -28,7 +28,7 @@ const callApi = function callApi(pathUrl, options) {
 
   return axios(options).then(
     (response) => {
-      console.log("Call-API => response", response);
+      console.log(`Call-API : ${pathUrl}`, response);
       const data = response && response.data ? response.data : {};
       return {
         data: data,
