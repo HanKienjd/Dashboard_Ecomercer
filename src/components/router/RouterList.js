@@ -9,19 +9,18 @@ import {
   Switch,
 } from "react-router-dom";
 import { getCookie } from "actions/common/utils";
-import Register from "../body/Register";
-import UserInfo from "../body/user/UserInfo";
+import Register from "../body/account/Register";
 import Login from "components/body/account/Login";
 import ForgotPassword from "components/body/account/ForgotPassword";
 import ChangePassword from "components/body/account/ChangePassword";
 import AdminHome from "components/body/admin/Home/AdminHome";
-import HistoryList from "components/body/history/HistoryList";
 import CategoryList from "components/body/admin/category/CategoryList";
 import CategoryForm from "components/body/admin/category/CategoryForm";
 import ProductsList from "components/body/admin/products/ProductsList";
 import UserList from "components/body/admin/user_manage/UserList";
 import UserForm from "components/body/admin/user_manage/UserForm";
-
+import AdvantismentList from "components/body/admin/advantisment/AdvantismentList";
+import AdvantismentForm from "components/body/admin/advantisment/AdvantismentForm";
 class RouterList extends React.Component {
   componentDidMount() {
     this.props.init();
@@ -38,8 +37,6 @@ class RouterList extends React.Component {
         <Route exact path="/dang-nhap" component={Login} />
         <Route exact path="/quen-mat-khau" component={ForgotPassword} />
         <Route exact path="/doi-mat-khau" component={ChangePassword} />
-        <Route exact path="/thong-tin-ca-nhan" component={UserInfo} />
-        <Route exact path="/lich-su" component={HistoryList} />
         <Route exact path="/admin" component={AdminHome} />
         <Route exact path="/admin/products/list" component={ProductsList} />
         <Route exact path="/admin/category/list" component={CategoryList} />
@@ -50,8 +47,10 @@ class RouterList extends React.Component {
           component={CategoryForm}
         />
 
-        <Route exacts path="/admin/user/list" component={UserList} />
+        <Route exact path="/admin/user/list" component={UserList} />
         <Route path="/admin/user/detail/:id" component={UserForm} />
+        <Route path="/admin/advantisment/list" component={AdvantismentList} />
+        <Route path="/admin/advantisment/create" component={AdvantismentForm} />
       </Switch>
     );
   }

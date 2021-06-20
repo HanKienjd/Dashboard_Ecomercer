@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import callApi from "actions/common/callApi";
+import { NavLink } from "react-router-dom";
 import {
   Table as Tables,
   Col,
@@ -16,7 +17,9 @@ const columns = [
     title: "Tên người dùng",
     dataIndex: "full_name",
     key: "full_name",
-    render: (text) => <a>{text}</a>,
+    render: (value, row, index) => {
+      return <NavLink to={"/admin/user/detail/" + row.id}>{value}</NavLink>;
+    },
   },
   {
     title: "Email",
@@ -55,7 +58,6 @@ function UserList() {
           notification.open({
             message: "có lỗi xảy ra",
           });
-          history.goBack();
         }
       });
     } catch (error) {

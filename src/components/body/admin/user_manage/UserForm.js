@@ -9,6 +9,7 @@ import {
   Button,
   notification,
   Card,
+  Input,
 } from "antd";
 import AdminContent from "components/body/layout/AdminContent";
 import { useHistory, useParams } from "react-router-dom";
@@ -43,6 +44,7 @@ function UserForm() {
   }, []);
 
   console.log("DataListUser", DataListUser);
+  console.log("id", id);
   return (
     <AdminContent>
       <PageHeader
@@ -53,29 +55,65 @@ function UserForm() {
           </Button>,
         ]}
       />
-      <Row gutter={[16, 16]}>
+      <Card size="small">
         {DataListUser &&
+          DataListUser.length > 0 &&
           DataListUser.map((item) => {
-            if (item.id === id) {
+            if (item.id == id) {
               return (
-                <Card size="small">
-                  <Col md={12}>
-                    <Row>
+                <Row gutter={[16, 20]}>
+                  <Col md={12} className="gutter-row">
+                    <Row
+                      gutter={[16, 16]}
+                      style={{ margin: "10px 0px 20px 0px" }}
+                    >
                       <Col md={4} xs={12}>
                         Họ và tên
                       </Col>
+                      <Col md={8} xs={12}>
+                        <Input defaultValue={item.full_name} />
+                      </Col>
+
                       <Col md={4} xs={12}>
-                        {item.fullname}
+                        Email
+                      </Col>
+                      <Col md={8} xs={12}>
+                        <Input defaultValue={item.email} />
+                      </Col>
+                    </Row>
+
+                    <Row gutter={[16, 16]} style={{ margin: "20px 0px" }}>
+                      <Col md={4} xs={12}>
+                        Giới tính
+                      </Col>
+                      <Col md={8} xs={12}>
+                        <Input defaultValue={item.gender} />
+                      </Col>
+                      <Col md={4} xs={12}>
+                        Ngày sinh
+                      </Col>
+                      <Col md={8} xs={12}>
+                        <Input defaultValue={item.date_of_birth} />
+                      </Col>
+                    </Row>
+                    <Row gutter={[16, 16]} style={{ margin: "20px 0px" }}>
+                      <Col md={4} xs={24}>
+                        Địa chỉ
+                      </Col>
+
+                      <Col md={20} xs={12}>
+                        <Input defaultValue={item.address} />
                       </Col>
                     </Row>
                   </Col>
-                  <Col md={12}>
+                  <Col md={12} className="gutter-row">
                     <div className="avt-wrapper">
                       <img
                         className="img-uploaded"
                         src={
                           item.image ? item.image : "/images/default-avatar.jpg"
                         }
+                        width={100}
                         // src={image ? `data:image/png;base64,${image}` : 'https://cf.shopee.vn/file/d6fe3aa81dc2f0f4938ad629afd347e7_tn'}
                         alt="not found"
                         // onError={(e) => this.onError(e)}
@@ -97,11 +135,11 @@ function UserForm() {
                       <p>Định dạng file: .JPEG, .PNG</p>
                     </div>
                   </Col>
-                </Card>
+                </Row>
               );
             }
           })}
-      </Row>
+      </Card>
     </AdminContent>
   );
 }
