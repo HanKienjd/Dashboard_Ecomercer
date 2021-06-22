@@ -60,3 +60,85 @@
     color: #fff;
   }
 }
+
+
+/*Mobile*/
+@media only screen and (max-width: 739px) {
+  .register-body {  
+      height: 26em;
+    .registerContainer {   
+      .register-header {
+        margin-top: 4em;
+        h2 {
+          font-size: 1.2em;
+        }
+      }
+      .Singup {
+        padding: 0.3em 1em;
+        .form-control-1 {
+          padding-bottom: 0.6em;
+          margin-bottom: 0.5em;
+            input {
+              height: 0.8em;
+            }
+            .note {
+              font-size: 0.8em;
+              line-height: 1.4em;
+            }
+            input[type = "checkbox"]{
+              height: 0.7em;
+              margin-right: 0.2em;
+            }
+            button {
+              margin-left: 0.1em;
+              font-size: 1em;
+            }
+         }
+      }
+    }
+    
+  }
+}
+
+/*Tablet*/
+@media only screen and (min-width: 740px) and(max-width: 1023px) {
+  .register-body {  
+  .registerContainer {   
+    .register-header {
+      margin-top: 2em;
+      margin-bottom: 2em;
+      h2 {
+        font-size: 3em;
+      }
+    }
+    .Singup {
+      padding: 2.5em 3.5em;
+      .form-control-1 {
+        bottom: 3em;
+        padding-bottom: 0.6em;
+        margin-bottom: 0.5em;
+          input {
+            font-size: 1.4em;
+            height: 3em;
+          }
+          .note {
+            font-size: 1.5em;
+            line-height: 1.4em;
+          }
+          input[type = "checkbox"]{
+            height: 1em;
+            margin-right: 0.4em;
+            margin-top: 0.4em;
+          }
+          button {
+            height: 2em;
+            margin-left: 0.1em;
+            font-size: 1.8em;
+          }
+       }
+    }
+  }
+  
+}
+}
+
