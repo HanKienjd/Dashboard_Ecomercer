@@ -30,3 +30,54 @@
     margin: 5px 0 45px 0;
   }
 }
+
+/*Mobile*/
+@media only screen and (max-width: 739px) {
+  .wrapper-login {
+    height: 25em;
+    margin: 5em 20% 0 20%;
+    .title-center {
+      font-size: 1.2em;
+    }
+    .login-form {
+      button, input {
+        font-size: 0.6em;
+        height: 1.8rem;
+        line-height: 0.5em;
+        right: 20em;
+      }
+    }
+    .text-center {
+      font-size: 0.8em;
+    }
+  }
+}
+
+/*Tablet*/
+@media only screen and (min-width: 740px) and(max-width: 1023px) {
+  .wrapper-login {
+    margin: 9em 18% 0 18%;
+    .title-center {
+      font-size: 1.8em;
+    }
+    .login-form {
+      button, input {
+        font-size: 1.4em;
+        margin: 1em 0 0.8em 0;
+      }
+      .hr {
+        span {
+          font-size: 1.3em;
+        }
+      }
+    }
+    .text-center {
+      font-size: 1.4em;
+    }
+  }
+}
+
+
+
+
+
