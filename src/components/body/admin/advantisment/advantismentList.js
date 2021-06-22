@@ -92,6 +92,7 @@ const AdvantismentList = () => {
         ]}
       />
       <Tables
+        rowKey={(record) => record.id}
         rowSelection={{
           type: "radio",
           ...rowSelection,

@@ -3,6 +3,7 @@ import { Table as Tables, Button, Modal, PageHeader, notification } from "antd";
 import ProductsForm from "./ProductsForm";
 import AdminContent from "components/body/layout/AdminContent";
 import callApi from "actions/common/callApi";
+import { useHistory } from "react-router-dom";
 import "./style.scss";
 const columns = [
   {
@@ -47,6 +48,7 @@ const columns = [
 
 const PAGE_SIZE = 10;
 const ProductsList = () => {
+  let history = useHistory();
   const [visible, setVisible] = useState(false);
   const [ProductsData, setProductsData] = useState();
   const [page, setPage] = useState(1);
@@ -76,6 +78,11 @@ const ProductsList = () => {
               message: "Xóa thành công",
             });
             fetchDataProducts();
+          } else {
+            notification.open({
+              message: "Có lỗi xảy ra",
+            });
+            history.goBack();
           }
         }
       );
@@ -112,6 +119,7 @@ const ProductsList = () => {
         ]}
       />
       <Tables
+        rowKey={(record) => record.id}
         rowSelection={{
           type: "radio",
           ...rowSelection,

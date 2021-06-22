@@ -21,6 +21,7 @@ import UserList from "components/body/admin/user_manage/UserList";
 import UserForm from "components/body/admin/user_manage/UserForm";
 import AdvantismentList from "components/body/admin/advantisment/AdvantismentList";
 import AdvantismentForm from "components/body/admin/advantisment/AdvantismentForm";
+import OrderList from "components/body/admin/order/OrderList";
 class RouterList extends React.Component {
   componentDidMount() {
     this.props.init();
@@ -51,6 +52,7 @@ class RouterList extends React.Component {
         <Route path="/admin/user/detail/:id" component={UserForm} />
         <Route path="/admin/advantisment/list" component={AdvantismentList} />
         <Route path="/admin/advantisment/create" component={AdvantismentForm} />
+        <Route path="/admin/order/list" component={OrderList} />
       </Switch>
     );
   }

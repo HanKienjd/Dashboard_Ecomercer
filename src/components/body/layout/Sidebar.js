@@ -10,7 +10,7 @@ const SideBar = () => {
       <div className="position-sticky pt-3">
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">
+            <a className="nav-link active" aria-current="page" href="/admin">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={24}
@@ -50,7 +50,7 @@ const SideBar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="/admin/order/list">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={24}
