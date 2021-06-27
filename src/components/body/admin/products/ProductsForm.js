@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import callApi from "actions/common/callApi";
 import { getCookie } from "actions/common/utils";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import AdminContent from "components/body/layout/AdminContent";
 import {
   Row,
   Col,
@@ -48,6 +49,7 @@ const inputLayout = {
 
 function ProductsForm(props) {
   let history = useHistory();
+  const { id } = useParams();
   //Get Data
   const accessToken = getCookie("_accessToken");
   const { handleSubmit, control, setValue } = useForm();
@@ -106,7 +108,35 @@ function ProductsForm(props) {
     try {
       callApi(`api/categories`, { method: "GET" }).then(
         ({ data, code, message }) => {
-          setCategoryList(data || []);
+          if (data && code === 200) {
+            setCategoryList(data || []);
+          } else {
+            notification.open({
+              message: "Có lỗi xảy ra",
+            });
+          }
+        }
+      );
+    } catch (error) {
+      console.log("ProductsForm -> fetchCategoryList ", error);
+    }
+  };
+  const fetchProductsDetail = () => {
+    try {
+      callApi(`api/products/${id}`, { method: "GET" }).then(
+        ({ data, code, message }) => {
+          if (data && code === 200) {
+            setName(data.name);
+            setPrice(data.buying_price);
+            setSellingPrice(data.selling_price);
+            setQuantity(data.quantity);
+            setCategoryId(data.category_id);
+            setDescription(data.description);
+          } else {
+            notification.open({
+              message: "Có lỗi xảy ra",
+            });
+          }
         }
       );
     } catch (error) {
@@ -115,122 +145,135 @@ function ProductsForm(props) {
   };
   useEffect(() => {
     fetchCategoryList();
+    if (id !== "" && id > 0) {
+      fetchProductsDetail();
+    }
   }, []);
 
+  console.log("name", name);
   return (
-    <Row className="product-create">
-      <Col md={1} xs={0}></Col>
-      <Col md={22} xs={24}>
-        <PageHeader
-          className="site-page-header"
-          title="Thêm sản phẩm mới"
-          extra={[
-            <Button type="primary" onClick={handleSubmit(onSubmit)}>
-              Lưu
-            </Button>,
-          ]}
-        />
-        <Form {...layout}>
-          <Row gutter={[15, 0]}>
-            <Col md={12} xs={24}>
-              <Row gutter={[16, 16]}>
-                <Col md={6}>
-                  <Upload
-                    listType="picture-card"
-                    className="avatar-uploader"
-                    showUploadList={false}
-                    onChange={handleChange}
-                  >
-                    Image
-                  </Upload>
-                </Col>
+    <AdminContent>
+      <Row className="product-create">
+        <Col md={1} xs={0}></Col>
+        <Col md={22} xs={24}>
+          <PageHeader
+            className="site-page-header"
+            title="Thêm sản phẩm mới"
+            extra={[
+              <Button type="primary" onClick={handleSubmit(onSubmit)}>
+                Lưu
+              </Button>,
+            ]}
+          />
+          <Form {...layout}>
+            <Row gutter={[15, 0]}>
+              <Col md={12} xs={24}>
+                <Row gutter={[16, 16]}>
+                  <Col md={6}>
+                    <Upload
+                      listType="picture-card"
+                      className="avatar-uploader"
+                      showUploadList={false}
+                      onChange={handleChange}
+                    >
+                      Image
+                    </Upload>
+                  </Col>
 
-                <Col md={24}>
-                  <Form.Item
-                    label="Tên Sản phẩm"
-                    name="name"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Xin hãy điển tên sản phẩm !",
-                      },
-                    ]}
-                    {...inputLayout}
-                  >
-                    <Input onChange={(e) => setName(e.target.value)} />
-                  </Form.Item>
-                </Col>
-                <Col md={24} xs={24}>
-                  <Form.Item
-                    label="Giá sản phẩm"
-                    name="buyingPrice"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Xin hãy điền giá sản phẩm",
-                      },
-                    ]}
-                    {...inputLayout}
-                  >
-                    <InputNumber
-                      onChange={(value) => setPrice(value)}
-                      style={{ width: "100%" }}
-                      formatter={(value) =>
-                        `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                      }
-                      parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
-                    />
-                  </Form.Item>
-                </Col>
-                <Col md={24} xs={24}>
-                  <Form.Item label="Giá thoả thuận" {...inputLayout}>
-                    <InputNumber
-                      onChange={(value) => setSellingPrice(value)}
-                      style={{ width: "100%" }}
-                      formatter={(value) =>
-                        `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                      }
-                      parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
-                    />
-                  </Form.Item>
-                </Col>
-                <Col md={24} xs={24}>
-                  <Form.Item label="Số lượng" {...inputLayout}>
-                    <Input
-                      onChange={(e) => setQuantity(e.target.value)}
-                      type="number"
-                    />
-                  </Form.Item>
-                </Col>
-                <Col md={24} xs={24}>
-                  <Form.Item
-                    label="Loại sản phẩm"
-                    name="category"
-                    {...inputLayout}
-                  >
-                    <Select onChange={(value) => setCategoryId(value)}>
-                      {CategoryList &&
-                        CategoryList.length > 0 &&
-                        CategoryList.map((item, index) => (
-                          <Select.Option value={item.id} key={index}>
-                            {item.name}
-                          </Select.Option>
-                        ))}
-                    </Select>
-                  </Form.Item>
-                </Col>
-              </Row>
-            </Col>
-            <Col md={12} xs={24}>
-              <Row gutter={[16, 16]}>
-                <Col md={24}>
-                  <Form.Item label="Nội dung ngắn" {...tailLayout}>
-                    <Input.TextArea
-                      onChange={(e) => setDescription(e.target.innerHTML)}
-                    />
-                  </Form.Item>
-                </Col>
-                {/* <Col md={24} xs={24}>
+                  <Col md={24}>
+                    <Form.Item
+                      label="Tên Sản phẩm"
+                      name="name"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Xin hãy điển tên sản phẩm !",
+                        },
+                      ]}
+                      {...inputLayout}
+                      initialValues={name || "name"}
+                    >
+                      <Input onChange={(e) => setName(e.target.value)} />
+                    </Form.Item>
+                  </Col>
+                  <Col md={24} xs={24}>
+                    <Form.Item
+                      label="Giá sản phẩm"
+                      name="buyingPrice"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Xin hãy điền giá sản phẩm",
+                        },
+                      ]}
+                      {...inputLayout}
+                    >
+                      <InputNumber
+                        onChange={(value) => setPrice(value)}
+                        style={{ width: "100%" }}
+                        formatter={(value) =>
+                          `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        }
+                        parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                        // defaultValue={price}
+                      />
+                    </Form.Item>
+                  </Col>
+                  <Col md={24} xs={24}>
+                    <Form.Item label="Giá thoả thuận" {...inputLayout}>
+                      <InputNumber
+                        onChange={(value) => setSellingPrice(value)}
+                        style={{ width: "100%" }}
+                        formatter={(value) =>
+                          `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        }
+                        parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                        // defaultValue={sellingPrice}
+                      />
+                    </Form.Item>
+                  </Col>
+                  <Col md={24} xs={24}>
+                    <Form.Item label="Số lượng" {...inputLayout}>
+                      <Input
+                        onChange={(e) => setQuantity(e.target.value)}
+                        type="number"
+                        // defaultValue={quantity}
+                      />
+                    </Form.Item>
+                  </Col>
+                  <Col md={24} xs={24}>
+                    <Form.Item
+                      label="Loại sản phẩm"
+                      name="category"
+                      {...inputLayout}
+                    >
+                      <Select
+                        onChange={(value) => setCategoryId(value)}
+                        // defaultValue={categoryId}
+                      >
+                        {CategoryList &&
+                          CategoryList.length > 0 &&
+                          CategoryList.map((item, index) => (
+                            <Select.Option value={item.id} key={index}>
+                              {item.name}
+                            </Select.Option>
+                          ))}
+                      </Select>
+                    </Form.Item>
+                  </Col>
+                </Row>
+              </Col>
+              <Col md={12} xs={24}>
+                <Row gutter={[16, 16]}>
+                  <Col md={24}>
+                    <Form.Item label="Nội dung ngắn" {...tailLayout}>
+                      <Input.TextArea
+                        onChange={(e) => setDescription(e.target.innerHTML)}
+                        // defaultValue={description}
+                      />
+                    </Form.Item>
+                  </Col>
+                  {/* <Col md={24} xs={24}>
                   <Form.Item label="Nội dung" {...tailLayout}>
                     <Controller
                       name="description"
@@ -246,12 +289,13 @@ function ProductsForm(props) {
                     />
                   </Form.Item>
                 </Col> */}
-              </Row>
-            </Col>
-          </Row>
-        </Form>
-      </Col>
-    </Row>
+                </Row>
+              </Col>
+            </Row>
+          </Form>
+        </Col>
+      </Row>
+    </AdminContent>
   );
 }
 

@@ -91,6 +91,7 @@ const QuestionList = (props) => {
           ]}
         />
         <Table
+          rowKey={(record) => record.id}
           rowSelection={{
             type: "radio",
             ...rowSelection,

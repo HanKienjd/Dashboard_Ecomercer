@@ -17,10 +17,13 @@ import AdminHome from "components/body/admin/Home/AdminHome";
 import CategoryList from "components/body/admin/category/CategoryList";
 import CategoryForm from "components/body/admin/category/CategoryForm";
 import ProductsList from "components/body/admin/products/ProductsList";
+import ProductsForm from "components/body/admin/products/ProductsForm";
 import UserList from "components/body/admin/user_manage/UserList";
 import UserForm from "components/body/admin/user_manage/UserForm";
 import AdvantismentList from "components/body/admin/advantisment/AdvantismentList";
 import AdvantismentForm from "components/body/admin/advantisment/AdvantismentForm";
+import OrderList from "components/body/admin/order/OrderList";
+import Profile from "components/body/account/Profile";
 class RouterList extends React.Component {
   componentDidMount() {
     this.props.init();
@@ -39,6 +42,8 @@ class RouterList extends React.Component {
         <Route exact path="/doi-mat-khau" component={ChangePassword} />
         <Route exact path="/admin" component={AdminHome} />
         <Route exact path="/admin/products/list" component={ProductsList} />
+        <Route path="/admin/products/edit/:id" component={ProductsForm} />
+        <Route path="/admin/products/create" component={ProductsForm} />
         <Route exact path="/admin/category/list" component={CategoryList} />
         <Route exact path="/admin/category/create" component={CategoryForm} />
         <Route
@@ -51,6 +56,8 @@ class RouterList extends React.Component {
         <Route path="/admin/user/detail/:id" component={UserForm} />
         <Route path="/admin/advantisment/list" component={AdvantismentList} />
         <Route path="/admin/advantisment/create" component={AdvantismentForm} />
+        <Route path="/admin/order/list" component={OrderList} />
+        <Route path="/admin/setting/profile" component={Profile} />
       </Switch>
     );
   }
