@@ -3,7 +3,8 @@ import { Table as Tables, Button, Modal, PageHeader, notification } from "antd";
 import ProductsForm from "./ProductsForm";
 import AdminContent from "components/body/layout/AdminContent";
 import callApi from "actions/common/callApi";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
+import NumberFormat from "react-number-format";
 import "./style.scss";
 const columns = [
   {
@@ -23,21 +24,34 @@ const columns = [
     title: "Giá tiền",
     dataIndex: "buying_price",
     key: "buying_price",
+    render: (value) => {
+      return (
+        <NumberFormat
+          value={value}
+          displayType={"text"}
+          thousandSeparator={true}
+        />
+      );
+    },
   },
   {
     title: "Giá sale",
     dataIndex: "selling_price",
     key: "selling_price",
+    render: (value) => {
+      return (
+        <NumberFormat
+          value={value}
+          displayType={"text"}
+          thousandSeparator={true}
+        />
+      );
+    },
   },
   {
     title: "Số lượng",
     dataIndex: "quantity",
     key: "quantity",
-  },
-  {
-    title: "Nội dung",
-    dataIndex: "description",
-    key: "description",
   },
   {
     title: "Chuyên mục",
@@ -110,12 +124,19 @@ const ProductsList = () => {
     <AdminContent>
       <PageHeader
         extra={[
+          <NavLink to={`/admin/products/edit/${rowId}`}>
+            <Button type="primary" hidden={!showButton}>
+              Sửa
+            </Button>
+          </NavLink>,
           <Button type="primary" hidden={!showButton} onClick={delDataItems}>
             Xóa
           </Button>,
-          <Button key="1" type="primary" onClick={() => setVisible(true)}>
-            Tạo sản phẩm
-          </Button>,
+          <NavLink to={`/admin/products/create`}>
+            <Button key="1" type="primary">
+              Tạo sản phẩm
+            </Button>
+          </NavLink>,
         ]}
       />
       <Tables
@@ -127,14 +148,6 @@ const ProductsList = () => {
         columns={columns}
         dataSource={ProductsData}
       />
-      <Modal
-        visible={visible}
-        width={1200}
-        onCancel={() => setVisible(false)}
-        footer={null}
-      >
-        <ProductsForm handleCancel={() => setVisible(false)} />
-      </Modal>
     </AdminContent>
   );
 };

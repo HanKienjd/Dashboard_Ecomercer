@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Tables as Table, Button, Col, Row, Card } from "antd";
 import callApi from "actions/common/callApi";
+import AdminContent from "components/body/layout/AdminContent";
 const PAGE_SIZE = 10;
 
 function OrderList() {
@@ -20,7 +21,7 @@ function OrderList() {
   useEffect(() => {
     fetchDataOrder();
   }, []);
-  return <div></div>;
+  return <AdminContent></AdminContent>;
 }
 
 export default OrderList;

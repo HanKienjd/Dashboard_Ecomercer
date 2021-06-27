@@ -27,6 +27,8 @@ export const login = (email, password) => (dispatch, getState) => {
       }
       if (code === 400) {
         window.noti.error("Tài khoản hoặc mật khẩu không đúng");
+      } else {
+        window.noti.error("Đăng nhập thất bại");
       }
     })
     .catch((error) => {
@@ -101,23 +103,20 @@ export const changePassword =
   };
 
 export const changeForgotPassword =
-  (username, email, newPassword, otp, selected) => (dispatch, getState) => {
-    debugger;
-    const temp = { newPassword, otp: Number(otp) };
-    let body = {};
-    if (selected == 0) {
-      body = { username, ...temp };
-    } else if (selected == 1) {
-      body = { email, ...temp };
-    } else {
-      return window.noti.error(
-        "Bạn cần điền email hoặc username để lấy lại mật khẩu"
-      );
-    }
+  (email, password, otp) => (dispatch, getState) => {
+    const temp = { password, code: otp };
+    //  if (selected == 1) {
+    //   body = { email, ...temp };
+    // } else {
+    //   return window.noti.error(
+    //     "Bạn cần điền email hoặc username để lấy lại mật khẩu"
+    //   );
+    // }
     const reqBody = {
-      body,
+      email,
+      ...temp,
     };
-    return callApi("change-password", { method: "POST", data: reqBody })
+    return callApi("api/forgot-password", { method: "POST", data: reqBody })
       .then(({ data, code, message }) => {
         if (data && code === 200) {
           window.noti.success("Đổi mật khẩu thành công");
@@ -138,28 +137,20 @@ export const changeForgotPassword =
       });
   };
 
-export const getOtpCode =
-  (username, type, email, selected) => (dispatch, getState) => {
-    const pathUrl = type == 1 ? "generate-otp" : "forgot-password";
-    debugger;
-    let body = {};
-    if (selected == 0) {
-      body = { username };
-    } else if (selected == 1) {
-      body = { email };
-    }
-    const reqBody = {
-      body,
-    };
-    return callApi(pathUrl, { method: "POST", data: reqBody })
-      .then(({ data, code, message }) => {
-        if (data && code === 200) {
-        }
-        if (code === 400) {
-        }
-      })
-      .catch((err) => {});
+export const getOtpCode = (email) => (dispatch, getState) => {
+  const pathUrl = "api/send-code";
+  const reqBody = {
+    email,
   };
+  return callApi(pathUrl, { method: "POST", data: reqBody })
+    .then(({ data, code, message }) => {
+      if (data && code === 200) {
+      }
+      if (code === 400) {
+      }
+    })
+    .catch((err) => {});
+};
 
 export const updateUserInfo =
   (name, phone, birthday, gender, school) => (dispatch, getState) => {

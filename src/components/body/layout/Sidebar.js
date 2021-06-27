@@ -108,6 +108,7 @@ const SideBar = () => {
             >
               <li className="nav-item">
                 <a class="nav-link" href="/admin/setting/profile">
+                  <i className="fas fa-users"></i>
                   Cài đặt người dùng
                 </a>
               </li>
