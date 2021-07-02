@@ -4,6 +4,7 @@ import { getCookie } from "actions/common/utils";
 import { useForm } from "react-hook-form";
 import { useHistory, useParams } from "react-router-dom";
 import AdminContent from "components/body/layout/AdminContent";
+import { get } from "lodash";
 import {
   Row,
   Col,
@@ -17,33 +18,17 @@ import {
   Spin,
   notification,
   InputNumber,
+  Image,
 } from "antd";
 import axios from "axios";
 
 const { Option } = Select;
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
 const tailLayout = {
   wrapperCol: {
     span: 24,
   },
   labelCol: {
     span: 24,
-  },
-};
-
-const inputLayout = {
-  wrapperCol: {
-    span: 16,
-  },
-  labelCol: {
-    span: 6,
   },
 };
 
@@ -62,7 +47,7 @@ function ProductsForm(props) {
   const [price, setPrice] = useState();
   const [sellingPrice, setSellingPrice] = useState();
   const [categoryId, setCategoryId] = useState();
-
+  const [productDetail, setProductDetail] = useState();
   const handleChange = ({ fileList: newFileList }) => {
     setImage(newFileList[0].originFileObj);
   };
@@ -121,11 +106,13 @@ function ProductsForm(props) {
       console.log("ProductsForm -> fetchCategoryList ", error);
     }
   };
+
   const fetchProductsDetail = () => {
     try {
       callApi(`api/products/${id}`, { method: "GET" }).then(
         ({ data, code, message }) => {
           if (data && code === 200) {
+            setProductDetail(data || []);
             setName(data.name);
             setPrice(data.buying_price);
             setSellingPrice(data.selling_price);
@@ -150,151 +137,197 @@ function ProductsForm(props) {
     }
   }, []);
 
-  console.log("name", name);
   return (
     <AdminContent>
-      <Row className="product-create">
-        <Col md={1} xs={0}></Col>
-        <Col md={22} xs={24}>
-          <PageHeader
-            className="site-page-header"
-            title="Thêm sản phẩm mới"
-            extra={[
-              <Button type="primary" onClick={handleSubmit(onSubmit)}>
-                Lưu
-              </Button>,
-            ]}
-          />
-          <Form {...layout}>
-            <Row gutter={[15, 0]}>
-              <Col md={12} xs={24}>
-                <Row gutter={[16, 16]}>
-                  <Col md={6}>
-                    <Upload
-                      listType="picture-card"
-                      className="avatar-uploader"
-                      showUploadList={false}
-                      onChange={handleChange}
-                    >
-                      Image
-                    </Upload>
-                  </Col>
-
-                  <Col md={24}>
-                    <Form.Item
-                      label="Tên Sản phẩm"
-                      name="name"
-                      rules={[
-                        {
-                          required: true,
-                          message: "Xin hãy điển tên sản phẩm !",
-                        },
-                      ]}
-                      {...inputLayout}
-                      initialValues={name || "name"}
-                    >
-                      <Input onChange={(e) => setName(e.target.value)} />
-                    </Form.Item>
-                  </Col>
-                  <Col md={24} xs={24}>
-                    <Form.Item
-                      label="Giá sản phẩm"
-                      name="buyingPrice"
-                      rules={[
-                        {
-                          required: true,
-                          message: "Xin hãy điền giá sản phẩm",
-                        },
-                      ]}
-                      {...inputLayout}
-                    >
-                      <InputNumber
-                        onChange={(value) => setPrice(value)}
-                        style={{ width: "100%" }}
-                        formatter={(value) =>
-                          `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                        }
-                        parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
-                        // defaultValue={price}
-                      />
-                    </Form.Item>
-                  </Col>
-                  <Col md={24} xs={24}>
-                    <Form.Item label="Giá thoả thuận" {...inputLayout}>
-                      <InputNumber
-                        onChange={(value) => setSellingPrice(value)}
-                        style={{ width: "100%" }}
-                        formatter={(value) =>
-                          `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                        }
-                        parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
-                        // defaultValue={sellingPrice}
-                      />
-                    </Form.Item>
-                  </Col>
-                  <Col md={24} xs={24}>
-                    <Form.Item label="Số lượng" {...inputLayout}>
-                      <Input
-                        onChange={(e) => setQuantity(e.target.value)}
-                        type="number"
-                        // defaultValue={quantity}
-                      />
-                    </Form.Item>
-                  </Col>
-                  <Col md={24} xs={24}>
-                    <Form.Item
-                      label="Loại sản phẩm"
-                      name="category"
-                      {...inputLayout}
-                    >
-                      <Select
-                        onChange={(value) => setCategoryId(value)}
-                        // defaultValue={categoryId}
-                      >
-                        {CategoryList &&
-                          CategoryList.length > 0 &&
-                          CategoryList.map((item, index) => (
-                            <Select.Option value={item.id} key={index}>
-                              {item.name}
-                            </Select.Option>
-                          ))}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                </Row>
-              </Col>
-              <Col md={12} xs={24}>
-                <Row gutter={[16, 16]}>
-                  <Col md={24}>
-                    <Form.Item label="Nội dung ngắn" {...tailLayout}>
-                      <Input.TextArea
-                        onChange={(e) => setDescription(e.target.innerHTML)}
-                        // defaultValue={description}
-                      />
-                    </Form.Item>
-                  </Col>
-                  {/* <Col md={24} xs={24}>
-                  <Form.Item label="Nội dung" {...tailLayout}>
-                    <Controller
-                      name="description"
-                      control={control}
-                      render={({ field }) => (
-                        <Input.TextArea
-                          size="large"
-                          className="style-content"
-                          {...field}
-                          style={{ height: "300px" }}
-                        />
-                      )}
-                    />
-                  </Form.Item>
-                </Col> */}
-                </Row>
+      <PageHeader
+        className="site-page-header"
+        title={id > 0 ? "Sửa sản phẩm" : "Thêm sản phẩm"}
+        extra={[
+          <Button type="primary" onClick={handleSubmit(onSubmit)}>
+            Lưu
+          </Button>,
+        ]}
+      />
+      {id > 0 && productDetail ? (
+        <Row gutter={[32, 16]}>
+          <Col md={12} xs={24}>
+            <Row gutter={[16, 16]}>
+              <Image
+                width={200}
+                src={get(productDetail, "image", "đang cập nhật")}
+              />
+              <Col md={24} xs={24}>
+                <Upload
+                  className="avatar-uploader"
+                  showUploadList={false}
+                  onChange={handleChange}
+                >
+                  <Button>Upload</Button>
+                </Upload>
               </Col>
             </Row>
-          </Form>
-        </Col>
-      </Row>
+            <Row gutter={[16, 16]}>
+              <Col md={6} xs={12}>
+                Tên sản phẩm
+              </Col>
+              <Col md={18} xs={12}>
+                <Input
+                  onChange={(e) => setName(e.target.value)}
+                  defaultValue={get(productDetail, "name", "-")}
+                />
+              </Col>
+              <Col md={6} xs={12}>
+                Giá sản phẩm
+              </Col>
+              <Col md={18} xs={12}>
+                <InputNumber
+                  onChange={(value) => setPrice(value)}
+                  style={{ width: "100%" }}
+                  formatter={(value) =>
+                    `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                  defaultValue={get(productDetail, "buying_price", "-")}
+                />
+              </Col>
+              <Col md={6} xs={12}>
+                Giá thỏa thuận
+              </Col>
+              <Col md={18} xs={12}>
+                <InputNumber
+                  onChange={(value) => setSellingPrice(value)}
+                  style={{ width: "100%" }}
+                  formatter={(value) =>
+                    `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                  defaultValue={get(productDetail, "selling_price", "-")}
+                />
+              </Col>
+              <Col md={6}>Số lượng</Col>
+              <Col md={18}>
+                <Input
+                  onChange={(e) => setQuantity(e.target.value)}
+                  type="number"
+                  defaultValue={get(productDetail, "quantity", "-")}
+                />
+              </Col>
+              <Col md={6}>Loại sản phẩm</Col>
+              <Col md={18}>
+                <Select
+                  onChange={(value) => setCategoryId(value)}
+                  defaultValue={get(productDetail, "category_id", "-")}
+                  style={{ width: "100%" }}
+                >
+                  {CategoryList &&
+                    CategoryList.length > 0 &&
+                    CategoryList.map((item, index) => (
+                      <Select.Option value={item.id} key={index}>
+                        {item.name}
+                      </Select.Option>
+                    ))}
+                </Select>
+              </Col>
+            </Row>
+          </Col>
+          <Col md={12} xs={24}>
+            <Row gutter={[16, 16]}>
+              <Col md={24}>
+                <Form.Item label="Nội dung ngắn" {...tailLayout}>
+                  <Input.TextArea
+                    onChange={(e) => setDescription(e.target.innerHTML)}
+                    defaultValue={get(productDetail, "description", "-")}
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      ) : (
+        <Row gutter={[32, 16]}>
+          <Col md={12} xs={24}>
+            <Row gutter={[16, 16]}>
+              <Col md={6}>
+                <Upload
+                  listType="picture-card"
+                  className="avatar-uploader"
+                  showUploadList={false}
+                  onChange={handleChange}
+                >
+                  Image
+                </Upload>
+              </Col>
+            </Row>
+            <Row gutter={[16, 16]}>
+              <Col md={6} xs={12}>
+                Tên sản phẩm
+              </Col>
+              <Col md={18} xs={12}>
+                <Input onChange={(e) => setName(e.target.value)} />
+              </Col>
+              <Col md={6} xs={12}>
+                Giá sản phẩm
+              </Col>
+              <Col md={18} xs={12}>
+                <InputNumber
+                  onChange={(value) => setPrice(value)}
+                  style={{ width: "100%" }}
+                  formatter={(value) =>
+                    `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                />
+              </Col>
+              <Col md={6} xs={12}>
+                Giá thỏa thuận
+              </Col>
+              <Col md={18} xs={12}>
+                <InputNumber
+                  onChange={(value) => setSellingPrice(value)}
+                  style={{ width: "100%" }}
+                  formatter={(value) =>
+                    `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                />
+              </Col>
+              <Col md={6}>Số lượng</Col>
+              <Col md={18}>
+                <Input
+                  onChange={(e) => setQuantity(e.target.value)}
+                  type="number"
+                />
+              </Col>
+              <Col md={6}>Loại sản phẩm</Col>
+              <Col md={18}>
+                <Select
+                  onChange={(value) => setCategoryId(value)}
+                  style={{ width: "100%" }}
+                >
+                  {CategoryList &&
+                    CategoryList.length > 0 &&
+                    CategoryList.map((item, index) => (
+                      <Select.Option value={item.id} key={index}>
+                        {item.name}
+                      </Select.Option>
+                    ))}
+                </Select>
+              </Col>
+            </Row>
+          </Col>
+          <Col md={12} xs={24}>
+            <Row gutter={[16, 16]}>
+              <Col md={24}>
+                <Form.Item label="Nội dung ngắn" {...tailLayout}>
+                  <Input.TextArea
+                    onChange={(e) => setDescription(e.target.innerHTML)}
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      )}
     </AdminContent>
   );
 }
