@@ -29,9 +29,10 @@ const PAGE_SIZE = 10;
 const AdvantismentList = () => {
   const [visible, setVisible] = useState(false);
   const [advantismentData, setAdvantismentData] = useState();
+  const [category, setCategoryList] = useState();
   const [page, setPage] = useState(1);
   const [showButton, setShowButton] = useState(false);
-  const [rowId, setRowId] = useState();
+  const [rowId, setRowId] = useState(" ");
 
   const fetchAdvantisment = () => {
     return callApi(`api/advertisements?limit=${PAGE_SIZE}&page=${page}`, {
@@ -40,6 +41,20 @@ const AdvantismentList = () => {
       .then(({ data, code, message }) => {
         if (data && code == 200) {
           setAdvantismentData(data.advertisements);
+        }
+      })
+      .catch((error) => {
+        console.log("error => fetchAdvantisment", error);
+      });
+  };
+
+  const fetchCategoryList = () => {
+    return callApi(`api/categories`, {
+      method: "GET",
+    })
+      .then(({ data, code, message }) => {
+        if (data && code == 200) {
+          setCategoryList(data);
         }
       })
       .catch((error) => {
@@ -66,6 +81,7 @@ const AdvantismentList = () => {
 
   useEffect(() => {
     fetchAdvantisment();
+    fetchCategoryList();
   }, []);
 
   const rowSelection = {
@@ -87,7 +103,7 @@ const AdvantismentList = () => {
             Xóa
           </Button>,
           <Button key="1" type="primary" onClick={() => setVisible(true)}>
-            Tạo quảng cáo
+            {rowId > 0 ? "Sửa quảng cáo" : "Thêm quảng cáo"}
           </Button>,
         ]}
       />
@@ -102,11 +118,16 @@ const AdvantismentList = () => {
       />
       <Modal
         visible={visible}
-        width={300}
+        width={600}
         onCancel={() => setVisible(false)}
         footer={null}
       >
-        <AdvantismentForm handleCancel={() => setVisible(false)} />
+        <AdvantismentForm
+          handleCancel={() => setVisible(false)}
+          id={rowId}
+          dataList={advantismentData}
+          category={category}
+        />
       </Modal>
     </AdminContent>
   );

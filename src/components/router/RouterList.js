@@ -46,11 +46,7 @@ class RouterList extends React.Component {
         <Route path="/admin/products/create" component={ProductsForm} />
         <Route exact path="/admin/category/list" component={CategoryList} />
         <Route exact path="/admin/category/create" component={CategoryForm} />
-        <Route
-          exact
-          path="/admin/category/detail/:id"
-          component={CategoryForm}
-        />
+        <Route exact path="/admin/category/edit/:id" component={CategoryForm} />
 
         <Route exact path="/admin/user/list" component={UserList} />
         <Route path="/admin/user/detail/:id" component={UserForm} />

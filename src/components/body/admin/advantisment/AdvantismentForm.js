@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import callApi from "actions/common/callApi";
 import { getCookie } from "actions/common/utils";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -7,52 +6,34 @@ import {
   Row,
   Col,
   Upload,
-  Form,
   Input,
   Button,
-  Checkbox,
   PageHeader,
   Select,
-  Spin,
   notification,
-  InputNumber,
 } from "antd";
 import axios from "axios";
 
 const { Option } = Select;
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    span: 24,
-  },
-  labelCol: {
-    span: 24,
-  },
-};
-
 const inputLayout = {
   wrapperCol: {
     span: 16,
   },
   labelCol: {
-    span: 6,
+    span: 8,
   },
 };
+const PAGE_SIZE = 10;
 
 function AdvantismentForm(props) {
   let history = useHistory();
+  const { id, dataList, category } = props;
   //Get Data
   const accessToken = getCookie("_accessToken");
   const { handleSubmit, control, setValue } = useForm();
   const [image, setImage] = useState();
   const [content, setContent] = useState("");
+  const [productId, setProductId] = useState();
 
   const handleChange = ({ fileList: newFileList }) => {
     setImage(newFileList[0].originFileObj);
@@ -62,7 +43,7 @@ function AdvantismentForm(props) {
     var bodyFormData = new FormData();
     bodyFormData.append("advertisementImg", image);
     bodyFormData.append("content", content);
-    bodyFormData.append("productId", 6);
+    bodyFormData.append("productId", productId);
 
     const config = {
       headers: {
@@ -96,43 +77,92 @@ function AdvantismentForm(props) {
       <Col md={22} xs={24}>
         <PageHeader
           className="site-page-header"
-          title="Thêm sản phẩm mới"
+          title={id !== " " && id > 0 ? "Sửa quảng cáo" : "Thêm quảng cáo"}
           extra={[
             <Button type="primary" onClick={handleSubmit(onSubmit)}>
               Lưu
             </Button>,
           ]}
         />
-        <Form {...layout}>
-          <Row gutter={[15, 0]}>
-            <Col md={6}>
-              <Upload
-                listType="picture-card"
-                className="avatar-uploader"
-                showUploadList={false}
-                onChange={handleChange}
-              >
-                Image
-              </Upload>
-            </Col>
+        <Row gutter={[15, 0]}>
+          {id !== " " && id > 0 ? (
+            <>
+              <Col md={6}>
+                <Upload
+                  listType="picture-card"
+                  className="avatar-uploader"
+                  showUploadList={false}
+                  onChange={handleChange}
+                >
+                  Image
+                </Upload>
+              </Col>
+              {dataList &&
+                dataList.map((item) => {
+                  if (item.id == id) {
+                    return (
+                      <Col md={18}>
+                        <Row>
+                          <Col md={8} xs={12}>
+                            Tên quảng cáo
+                          </Col>
+                          <Col md={16} xs={12}>
+                            {" "}
+                            <Input
+                              onChange={(e) => setContent(e.target.value)}
+                              defaultValue={item.content}
+                            />
+                          </Col>
+                        </Row>
+                      </Col>
+                    );
+                  }
+                })}
+            </>
+          ) : (
+            <>
+              <Col md={6}>
+                <Upload
+                  listType="picture-card"
+                  className="avatar-uploader"
+                  showUploadList={false}
+                  onChange={handleChange}
+                >
+                  Image
+                </Upload>
+              </Col>
 
-            <Col md={24}>
-              <Form.Item
-                label="Tên quảng cáo"
-                name="name"
-                rules={[
-                  {
-                    required: true,
-                    message: "Xin hãy điển tên quảng cáo !",
-                  },
-                ]}
-                {...inputLayout}
-              >
-                <Input onChange={(e) => setContent(e.target.value)} />
-              </Form.Item>
-            </Col>
-          </Row>
-        </Form>
+              <Col md={18}>
+                <Row gutter={[16, 16]}>
+                  <Col md={8} xs={12}>
+                    Tên quảng cáo
+                  </Col>
+                  <Col md={16} xs={12}>
+                    {" "}
+                    <Input onChange={(e) => setContent(e.target.value)} />
+                  </Col>
+                  <Col md={8} xs={12}>
+                    Chuyên mục
+                  </Col>
+                  <Col md={16} xs={12}>
+                    {" "}
+                    <Select
+                      onChange={(value) => setProductId(value)}
+                      style={{ width: "100%" }}
+                    >
+                      {category &&
+                        category.map((item) => (
+                          <Select.Option value={item.id}>
+                            {item.name}
+                          </Select.Option>
+                        ))}
+                    </Select>
+                  </Col>
+                </Row>
+              </Col>
+            </>
+          )}
+        </Row>
       </Col>
     </Row>
   );
