@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useHistory, useParams } from "react-router-dom";
 import AdminContent from "components/body/layout/AdminContent";
 import { get } from "lodash";
+import { UploadOutlined } from "@ant-design/icons";
 import {
   Row,
   Col,
@@ -31,6 +32,7 @@ const tailLayout = {
     span: 24,
   },
 };
+const fileList = [];
 
 function ProductsForm(props) {
   let history = useHistory();
@@ -48,6 +50,7 @@ function ProductsForm(props) {
   const [sellingPrice, setSellingPrice] = useState();
   const [categoryId, setCategoryId] = useState();
   const [productDetail, setProductDetail] = useState();
+
   const handleChange = ({ fileList: newFileList }) => {
     setImage(newFileList[0].originFileObj);
   };
@@ -71,7 +74,7 @@ function ProductsForm(props) {
     };
     try {
       axios
-        .post("http://localhost:8001/api/products", bodyFormData, config)
+        .post("http://localhost:3000/api/products", bodyFormData, config)
         .then((response) => {
           if (response.status == 201) {
             notification.open({
@@ -248,13 +251,19 @@ function ProductsForm(props) {
           <Col md={12} xs={24}>
             <Row gutter={[16, 16]}>
               <Col md={6}>
-                <Upload
+                {/* <Upload
                   listType="picture-card"
                   className="avatar-uploader"
                   showUploadList={false}
-                  onChange={handleChange}
                 >
                   Image
+                </Upload> */}
+                <Upload
+                  onChange={handleChange}
+                  listType="picture"
+                  defaultFileList={[...fileList]}
+                >
+                  <Button icon={<UploadOutlined />}>Upload</Button>
                 </Upload>
               </Col>
             </Row>

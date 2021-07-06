@@ -10,6 +10,8 @@ import "./css/reponsive.css";
 import "./css/style.css";
 import "./css/stylechunk.css";
 import "./css/plugin.css";
+import "./css/productReviews.min.css";
+import "./css/lightbox.min.css";
 
 import RouterList from "./router";
 import {
