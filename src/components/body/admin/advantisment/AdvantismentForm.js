@@ -53,7 +53,7 @@ function AdvantismentForm(props) {
     };
     try {
       axios
-        .post("http://localhost:8001/api/advertisements", bodyFormData, config)
+        .post("http://localhost:3000/api/advertisements", bodyFormData, config)
         .then((response) => {
           if (response.status == 201) {
             notification.open({

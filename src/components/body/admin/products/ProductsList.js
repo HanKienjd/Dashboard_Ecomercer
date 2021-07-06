@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Table as Tables, Button, Modal, PageHeader, notification } from "antd";
+import {
+  Table as Tables,
+  Button,
+  PageHeader,
+  notification,
+  Pagination,
+} from "antd";
 import ProductsForm from "./ProductsForm";
 import AdminContent from "components/body/layout/AdminContent";
 import callApi from "actions/common/callApi";
 import { useHistory, NavLink } from "react-router-dom";
 import NumberFormat from "react-number-format";
 import "./style.scss";
+
 const columns = [
   {
     title: "Ảnh sản phẩm",
