@@ -1,0 +1,163 @@
+.mySlick .synch-carousels {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.mySlick .synch-carousels>* {
+    width: 100%;
+}
+
+.mySlick .synch-carousels .right {
+    order: -1;
+}
+
+.mySlick .synch-carousels .left {
+    overflow: hidden;
+}
+
+.mySlick .synch-carousels .gallery {
+    display: none;
+}
+
+.mySlick .synch-carousels .gallery .slick-list {
+    height: auto !important;
+    margin: 0 -20px;
+}
+
+.mySlick .synch-carousels .gallery .slick-slide {
+    margin: 0 20px;
+}
+
+@media screen and (min-width: 480px) {
+    .mySlick .synch-carousels .right {
+        margin-bottom: 20px;
+    }
+    .mySlick .synch-carousels .gallery {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .mySlick .synch-carousels .right {
+        position: relative;
+        width: calc(100% - 230px);
+        margin-bottom: 0;
+        order: 2;
+    }
+    .mySlick .synch-carousels .left {
+        width: 210px;
+    }
+    .mySlick .synch-carousels .gallery .slick-slide {
+        margin: 0 0 20px 0;
+    }
+    .mySlick .synch-carousels .gallery .slick-list {
+        margin: 0;
+    }
+}
+
+.mySlick img {
+    max-width: 100%;
+    height: auto;
+}
+
+.mySlick button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.mySlick .over-visible {
+    overflow: visible;
+}
+
+.mySlick .loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    background: white;
+}
+
+.mySlick .container {
+    max-width: 880px;
+    padding: 20px 10px;
+    margin: 0 auto;
+}
+
+.mySlick .synch-carousels {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.mySlick .synch-carousels>* {
+    width: 100%;
+}
+
+.mySlick .synch-carousels .right {
+    order: -1;
+}
+
+.mySlick .synch-carousels .left {
+    overflow: hidden;
+}
+
+.mySlick .synch-carousels .gallery {
+    display: none;
+}
+
+.mySlick .synch-carousels .slick-slide {
+    outline: none;
+}
+
+.mySlick .synch-carousels .slick-vertical .slick-slide {
+    border: none;
+}
+
+.mySlick .synch-carousels .gallery .slick-list {
+    height: auto !important;
+    margin: 0 -20px;
+}
+
+.mySlick .synch-carousels .gallery .slick-slide {
+    cursor: pointer;
+}
+
+.mySlick .synch-carousels .gallery .slick-slide {
+    margin: 0 20px;
+}
+
+.mySlick .synch-carousels .nav-arrows {
+    display: flex;
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mySlick .synch-carousels .nav-arrows svg {
+    fill: black;
+}
+
+.mySlick .synch-carousels .arrow-left {
+    margin-right: 35px;
+}
+
+.mySlick .synch-carousels .photos-counter {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    padding: 0 20px;
+    color: white;
+    background: #292929;
+}

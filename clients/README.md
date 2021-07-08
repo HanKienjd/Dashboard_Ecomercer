@@ -1,3 +1,14 @@
-- check nodejs : Dùng Cmd : node -v
-- npm install --save : trong thư mục client
-- npm run dev : run chương trình
+# Next + Ant Design
+
+## How to use
+
+Install it and run:
+
+```bash
+npm install
+npm run dev
+# or
+yarn
+yarn dev
+```
+
