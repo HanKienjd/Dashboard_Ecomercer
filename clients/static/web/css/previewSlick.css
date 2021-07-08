@@ -1,0 +1,73 @@
+.synch-carousels {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    overflow: hidden;
+}
+
+.synch-carousels>* {
+    width: 100%;
+}
+
+.synch-carousels .right {
+    order: -1;
+    flex-grow: 1;
+}
+
+.synch-carousels .left, .synch-carousels .right {
+    overflow: hidden;
+}
+
+.synch-carousels .gallery {
+    display: none;
+}
+
+.synch-carousels .gallery .slick-list {
+    height: auto !important;
+    margin: 0 -20px;
+}
+.synch-carousels .left .slick-slide.slick-current, .synch-carousels .right .slick-slide {
+    border: 1px solid #eeeeee;
+}
+
+
+@media screen and (min-width: 480px) {
+    .synch-carousels .right {
+        margin-bottom: 20px;
+    }
+    .synch-carousels .gallery {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .synch-carousels .right {
+        position: relative;
+        width: calc(100% - 230px);
+        margin-bottom: 0;
+        order: 2;
+    }
+    .synch-carousels .left {
+        width: 210px;
+        width: 130px;
+    }
+    .synch-carousels .gallery .slick-slide {
+        margin: 0 20px 20px 0;
+    }
+    .synch-carousels .gallery .slick-list {
+        margin: 0;
+    }
+}
+
+.synch-carousels .left .slick-slide {
+    outline: none;
+    cursor: pointer;
+}
+
+.synch-carousels .right .slick-slide {
+    outline: none;
+    cursor: grab;
+}

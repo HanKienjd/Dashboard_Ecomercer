@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "outDir": "build/dist",
+    "module": "esnext",
+    "target": "es2016",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "sourceMap": true,
+    "baseUrl": ".",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "rootDirs": [
+      "/"
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+  "include": [
+    "./assets",
+    "componentsDash",
+    "./config",
+    "./layouts",
+    "./pages",
+    "./utils",
+    "./services",
+    "./componentPages",
+    "componentDashs/FilterUser/GroupUsersSelect.js",
+    "componentDashs/FilterUser/PlacesIdSelect.js",
+    "webpack.config.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
