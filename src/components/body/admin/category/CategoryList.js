@@ -7,15 +7,12 @@ import callApi from "actions/common/callApi";
 
 const columns = [
   {
-    title: "Mã sản phẩm",
+    title: "Mã chuyên mục",
     dataIndex: "id",
     key: "id",
-    render(value, row, index) {
-      return <NavLink to={`/admin/category/detail/${row.id}`}>{value}</NavLink>;
-    },
   },
   {
-    title: "Tên sản phẩm",
+    title: "Tên chuyên mục",
     dataIndex: "name",
     key: "name",
     render: (text) => <a>{text}</a>,
@@ -83,6 +80,12 @@ const QuestionList = (props) => {
             <Button type="primary" hidden={!showButton} onClick={delDataItems}>
               Xóa
             </Button>,
+            <NavLink to={`/admin/category/edit/${RowId}`}>
+              <Button type="primary" hidden={!showButton}>
+                Sửa
+              </Button>
+            </NavLink>,
+
             <NavLink to="/admin/category/create">
               <Button key="1" type="primary">
                 Tạo chuyên mục
@@ -91,6 +94,7 @@ const QuestionList = (props) => {
           ]}
         />
         <Table
+          rowKey={(record) => record.id}
           rowSelection={{
             type: "radio",
             ...rowSelection,

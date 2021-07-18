@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import callApi from "actions/common/callApi";
 import { getCookie } from "actions/common/utils";
-
+import { useForm } from "react-hook-form";
+import { useHistory, useParams } from "react-router-dom";
+import AdminContent from "components/body/layout/AdminContent";
+import { get } from "lodash";
+import { UploadOutlined } from "@ant-design/icons";
 import {
   Row,
   Col,
   Upload,
-  message,
   Form,
   Input,
   Button,
@@ -14,209 +17,327 @@ import {
   PageHeader,
   Select,
   Spin,
+  notification,
+  InputNumber,
+  Image,
 } from "antd";
 import axios from "axios";
 
 const { Option } = Select;
-
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
 const tailLayout = {
   wrapperCol: {
-    span: 21,
+    span: 24,
   },
   labelCol: {
-    span: 3,
+    span: 24,
   },
 };
-
-const inputLayout = {
-  wrapperCol: {
-    span: 18,
-  },
-  labelCol: {
-    span: 6,
-  },
-};
+const fileList = [];
 
 function ProductsForm(props) {
+  let history = useHistory();
+  const { id } = useParams();
   //Get Data
   const accessToken = getCookie("_accessToken");
-
+  const { handleSubmit, control, setValue } = useForm();
+  const [CategoryList, setCategoryList] = useState();
   const [image, setImage] = useState();
-  const [nameProduct, setNameProduct] = useState();
-  const [priceProduct, setPriceProduct] = useState();
-  const [dealProduct, setDealProduct] = useState();
-  const [categoryProduct, setCategoryProduct] = useState();
-  const [Quantity, setQuantity] = useState();
-  const [shortDescription, setShortDescription] = useState();
+  const [name, setName] = useState();
+  const [status, setStatus] = useState();
   const [description, setDescription] = useState();
-  const [loading, setLoading] = useState(false);
+  const [quantity, setQuantity] = useState();
+  const [price, setPrice] = useState();
+  const [sellingPrice, setSellingPrice] = useState();
+  const [categoryId, setCategoryId] = useState();
+  const [productDetail, setProductDetail] = useState();
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const handleChange = ({ fileList: newFileList }) => {
+    setImage(newFileList[0].originFileObj);
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+  const onSubmit = (data) => {
+    var bodyFormData = new FormData();
+    bodyFormData.append("productImg", image);
+    bodyFormData.append("name", name);
+    bodyFormData.append("status", 1);
+    bodyFormData.append("buyingPrice", price);
+    bodyFormData.append("sellingPrice", sellingPrice);
+    bodyFormData.append("quantity", quantity);
+    bodyFormData.append("description", description);
+    bodyFormData.append("categoryId", categoryId);
 
-  const handleChange = (info) => {
-    setImage(info.fileList[0].originFileObj);
-  };
-
-  const handleSubmit = () => {
-    const item = {
-      name: nameProduct,
-      buyingPrice: priceProduct,
-      sellingPrice: dealProduct,
-      description: description,
-      categoryId: categoryProduct,
-      quantity: Quantity,
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: "Bearer " + accessToken,
+      },
     };
     try {
-      axios({
-        url: "http://localhost:3000/api/products",
-        method: "POST",
-        header: {
-          "Content-Type": "multipart/form-data",
-          Authorization: "Bearer" + accessToken,
-        },
-        data: item,
-      }).then((response) => {
-        console.log("response", response);
-      });
-    } catch (error) {}
-
-    // callApi("api/products", {
-    //   method: "POST",
-    //   data: item,
-    //   header: { "Content-Type": "multipart/form-data" },
-    // }).then(({ data, code, message }) => {
-    //   console.log("message", message);
-    // });
-
-    console.log("item", item);
+      axios
+        .post("http://localhost:3000/api/products", bodyFormData, config)
+        .then((response) => {
+          if (response.status == 201) {
+            notification.open({
+              message: "Tạo thành công",
+            });
+            history.push("/admin/products/list");
+          } else {
+            notification.open({
+              message: "Có lỗi xảy ra",
+            });
+          }
+        });
+    } catch (error) {
+      console.log("ProductForm -> handleSubmit :", error);
+    }
   };
-  console.log("accessToken", accessToken);
 
-  console.log("description", description);
+  const fetchCategoryList = () => {
+    try {
+      callApi(`api/categories`, { method: "GET" }).then(
+        ({ data, code, message }) => {
+          if (data && code === 200) {
+            setCategoryList(data || []);
+          } else {
+            notification.open({
+              message: "Có lỗi xảy ra",
+            });
+          }
+        }
+      );
+    } catch (error) {
+      console.log("ProductsForm -> fetchCategoryList ", error);
+    }
+  };
+
+  const fetchProductsDetail = () => {
+    try {
+      callApi(`api/products/${id}`, { method: "GET" }).then(
+        ({ data, code, message }) => {
+          if (data && code === 200) {
+            setProductDetail(data || []);
+            setName(data.name);
+            setPrice(data.buying_price);
+            setSellingPrice(data.selling_price);
+            setQuantity(data.quantity);
+            setCategoryId(data.category_id);
+            setDescription(data.description);
+          } else {
+            notification.open({
+              message: "Có lỗi xảy ra",
+            });
+          }
+        }
+      );
+    } catch (error) {
+      console.log("ProductsForm -> fetchCategoryList ", error);
+    }
+  };
+  useEffect(() => {
+    fetchCategoryList();
+    if (id !== "" && id > 0) {
+      fetchProductsDetail();
+    }
+  }, []);
+
   return (
-    <Row className="product-create">
-      <Col md={1} xs={0}></Col>
-      <Col md={22} xs={24}>
-        <PageHeader className="site-page-header" title="Thêm mới sản phẩm" />
-        <Form {...layout}>
-          <Row gutter={[15, 0]}>
-            <Col md={24} xs={24}>
-              <Upload
-                name="avatar"
-                listType="picture-card"
-                className="avatar-uploader"
-                showUploadList={false}
-                onChange={handleChange}
-              >
-                Image
-              </Upload>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Tên Sản phẩm"
-                name="name"
-                rules={[
-                  {
-                    required: true,
-                    message: "Xin hãy điển tên sản phẩm !",
-                  },
-                ]}
-                {...inputLayout}
-              >
-                <Input onChange={(e) => setNameProduct(e.target.value)} />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Giá sản phẩm"
-                name="price"
-                rules={[
-                  {
-                    required: true,
-                    message: "Xin hãy điền giá sản phẩm",
-                  },
-                ]}
-                {...inputLayout}
-              >
+    <AdminContent>
+      <PageHeader
+        className="site-page-header"
+        title={id > 0 ? "Sửa sản phẩm" : "Thêm sản phẩm"}
+        extra={[
+          <Button type="primary" onClick={handleSubmit(onSubmit)}>
+            Lưu
+          </Button>,
+        ]}
+      />
+      {id > 0 && productDetail ? (
+        <Row gutter={[32, 16]}>
+          <Col md={12} xs={24}>
+            <Row gutter={[16, 16]}>
+              <Image
+                width={200}
+                src={get(productDetail, "image", "đang cập nhật")}
+              />
+              <Col md={24} xs={24}>
+                <Upload
+                  className="avatar-uploader"
+                  showUploadList={false}
+                  onChange={handleChange}
+                >
+                  <Button>Upload</Button>
+                </Upload>
+              </Col>
+            </Row>
+            <Row gutter={[16, 16]}>
+              <Col md={6} xs={12}>
+                Tên sản phẩm
+              </Col>
+              <Col md={18} xs={12}>
                 <Input
-                  type="number"
-                  onChange={(e) => setPriceProduct(e.target.value)}
+                  onChange={(e) => setName(e.target.value)}
+                  defaultValue={get(productDetail, "name", "-")}
                 />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item
-                label="Giá thoả thuận"
-                name="deal-price"
-                {...inputLayout}
-              >
-                <Input
-                  type="number"
-                  onChange={(e) => setDealProduct(e.target.value)}
+              </Col>
+              <Col md={6} xs={12}>
+                Giá sản phẩm
+              </Col>
+              <Col md={18} xs={12}>
+                <InputNumber
+                  onChange={(value) => setPrice(value)}
+                  style={{ width: "100%" }}
+                  formatter={(value) =>
+                    `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                  defaultValue={get(productDetail, "buying_price", "-")}
                 />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item label="Số lượng" name="quantity" {...inputLayout}>
+              </Col>
+              <Col md={6} xs={12}>
+                Giá thỏa thuận
+              </Col>
+              <Col md={18} xs={12}>
+                <InputNumber
+                  onChange={(value) => setSellingPrice(value)}
+                  style={{ width: "100%" }}
+                  formatter={(value) =>
+                    `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                  defaultValue={get(productDetail, "selling_price", "-")}
+                />
+              </Col>
+              <Col md={6}>Số lượng</Col>
+              <Col md={18}>
                 <Input
-                  type="number"
                   onChange={(e) => setQuantity(e.target.value)}
+                  type="number"
+                  defaultValue={get(productDetail, "quantity", "-")}
                 />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item label="Loại sản phẩm" name="category" {...inputLayout}>
-                <Select onChange={(value) => setCategoryProduct(value)}>
-                  <Option value={1}>hoa quả</Option>
-                  <Option value={2}>rau củ</Option>
-                  <Option value={3}>thực phẩm</Option>
+              </Col>
+              <Col md={6}>Loại sản phẩm</Col>
+              <Col md={18}>
+                <Select
+                  onChange={(value) => setCategoryId(value)}
+                  defaultValue={get(productDetail, "category_id", "-")}
+                  style={{ width: "100%" }}
+                >
+                  {CategoryList &&
+                    CategoryList.length > 0 &&
+                    CategoryList.map((item, index) => (
+                      <Select.Option value={item.id} key={index}>
+                        {item.name}
+                      </Select.Option>
+                    ))}
                 </Select>
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={24}>
-              <Form.Item label="Nội dung ngắn" {...tailLayout}>
-                <Input.TextArea
-                  onChange={(e) => setShortDescription(e.target.value)}
+              </Col>
+            </Row>
+          </Col>
+          <Col md={12} xs={24}>
+            <Row gutter={[16, 16]}>
+              <Col md={24}>
+                <Form.Item label="Nội dung ngắn" {...tailLayout}>
+                  <Input.TextArea
+                    onChange={(e) => setDescription(e.target.innerHTML)}
+                    defaultValue={get(productDetail, "description", "-")}
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      ) : (
+        <Row gutter={[32, 16]}>
+          <Col md={12} xs={24}>
+            <Row gutter={[16, 16]}>
+              <Col md={6}>
+                {/* <Upload
+                  listType="picture-card"
+                  className="avatar-uploader"
+                  showUploadList={false}
+                >
+                  Image
+                </Upload> */}
+                <Upload
+                  onChange={handleChange}
+                  listType="picture"
+                  defaultFileList={[...fileList]}
+                >
+                  <Button icon={<UploadOutlined />}>Upload</Button>
+                </Upload>
+              </Col>
+            </Row>
+            <Row gutter={[16, 16]}>
+              <Col md={6} xs={12}>
+                Tên sản phẩm
+              </Col>
+              <Col md={18} xs={12}>
+                <Input onChange={(e) => setName(e.target.value)} />
+              </Col>
+              <Col md={6} xs={12}>
+                Giá sản phẩm
+              </Col>
+              <Col md={18} xs={12}>
+                <InputNumber
+                  onChange={(value) => setPrice(value)}
+                  style={{ width: "100%" }}
+                  formatter={(value) =>
+                    `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
                 />
-              </Form.Item>
-            </Col>
-            <Col md={24} xs={24}>
-              <Form.Item label="Nội dung" {...tailLayout}>
-                <Input.TextArea
-                  size="large"
-                  className="style-content"
-                  onChange={(e) => setDescription(e.target.value)}
+              </Col>
+              <Col md={6} xs={12}>
+                Giá thỏa thuận
+              </Col>
+              <Col md={18} xs={12}>
+                <InputNumber
+                  onChange={(value) => setSellingPrice(value)}
+                  style={{ width: "100%" }}
+                  formatter={(value) =>
+                    `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
                 />
-              </Form.Item>
-            </Col>
-          </Row>
-          <Form.Item>
-            <Button type="primary" onClick={handleSubmit}>
-              Submit
-            </Button>
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" onClick={props.handleCancel}>
-              Cancel
-            </Button>
-          </Form.Item>
-        </Form>
-      </Col>
-    </Row>
+              </Col>
+              <Col md={6}>Số lượng</Col>
+              <Col md={18}>
+                <Input
+                  onChange={(e) => setQuantity(e.target.value)}
+                  type="number"
+                />
+              </Col>
+              <Col md={6}>Loại sản phẩm</Col>
+              <Col md={18}>
+                <Select
+                  onChange={(value) => setCategoryId(value)}
+                  style={{ width: "100%" }}
+                >
+                  {CategoryList &&
+                    CategoryList.length > 0 &&
+                    CategoryList.map((item, index) => (
+                      <Select.Option value={item.id} key={index}>
+                        {item.name}
+                      </Select.Option>
+                    ))}
+                </Select>
+              </Col>
+            </Row>
+          </Col>
+          <Col md={12} xs={24}>
+            <Row gutter={[16, 16]}>
+              <Col md={24}>
+                <Form.Item label="Nội dung ngắn" {...tailLayout}>
+                  <Input.TextArea
+                    onChange={(e) => setDescription(e.target.innerHTML)}
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      )}
+    </AdminContent>
   );
 }
 

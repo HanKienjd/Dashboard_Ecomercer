@@ -48,7 +48,7 @@ const CategoryForm = () => {
   };
 
   const fetchDataCategory = async () => {
-    callApi(`api/categories/${id}`, { method: "GET" })
+    callApi(`api/categories`, { method: "GET" })
       .then(({ data, code, message }) => {
         setDataCategory(data);
       })
@@ -66,17 +66,32 @@ const CategoryForm = () => {
   console.log("id", id);
   return (
     <AdminContent>
-      <Card title="Tạo chuyên mục" size="small">
+      <Card title={id > 0 ? "Sửa chuyên mục" : "Thêm chuyên mục"} size="small">
         <Row gutter={[16, 16]}>
           <Col md={4} xs={12}>
             Tên chuyên mục
           </Col>
-          <Col md={12} xs={24}>
-            <Input
-              {...register("name")}
-              defaultValue={get(DataCategory, "name", "")}
-            />
-          </Col>
+          {id && id > 0 ? (
+            <>
+              {DataCategory &&
+                DataCategory.map((item) => {
+                  if (item.id == id) {
+                    return (
+                      <Col md={12} xs={24}>
+                        <Input
+                          {...register("name")}
+                          defaultValue={get(item, "name", "")}
+                        />
+                      </Col>
+                    );
+                  }
+                })}
+            </>
+          ) : (
+            <Col md={12} xs={24}>
+              <Input {...register("name")} />
+            </Col>
+          )}
         </Row>
         <Button type="submit" onClick={handleSubmit(onSubmit)}>
           Submit

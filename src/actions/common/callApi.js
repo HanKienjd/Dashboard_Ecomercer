@@ -3,7 +3,7 @@ import { getCookie } from "./utils";
 
 const callApi = function callApi(pathUrl, options) {
   const accessToken = getCookie("_accessToken");
-  const domain = "http://localhost:8001/";
+  const domain = "http://localhost:3000/";
   options.mode = "cors";
   if (accessToken) {
     options.headers = {
@@ -28,7 +28,7 @@ const callApi = function callApi(pathUrl, options) {
 
   return axios(options).then(
     (response) => {
-      console.log("Call-API => response", response);
+      console.log(`Call-API : ${pathUrl}`, response);
       const data = response && response.data ? response.data : {};
       return {
         data: data,

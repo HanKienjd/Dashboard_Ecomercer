@@ -1,0 +1,18 @@
+module.exports = {
+  'app.menu.name': 'Quản lý menu',
+  'app.menu.createName': 'Thêm mới menu',
+  'app.menu.editName': 'Sửa thông tin menu',
+  'app.menu.Title': 'Tên menu',
+  'app.menu.Name': 'Định danh',
+  'app.menu.MenuParentId': 'menu cha',
+  'app.menu.Url': 'Đường dẫn',
+  'app.menu.Status': 'Trạng thái',
+  'app.menu.Component': 'Thành phần',
+  'app.menu.Status.1': 'Kích hoạt',
+  'app.menu.Status.2': 'Hủy',
+  'app.menu.Image': 'Icon',
+  'app.menu.create': 'Thêm mới menu',
+  'app.menu.Order': 'Thứ tự',
+  'app.menu.searchUser': "Tìm kiếm theo tên menu",
+  'app.menu.update.order.success': 'Cập nhật thứ tự thành công',
+};

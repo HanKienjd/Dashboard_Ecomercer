@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row } from "antd";
 
 const SideBar = () => {
+  const [visible, setVisible] = useState(false);
+  const handleClickVisible = (e) => {
+    e.preventDefault();
+    setVisible(!visible);
+  };
   return (
     <nav
       id="sidebarMenu"
@@ -10,7 +15,7 @@ const SideBar = () => {
       <div className="position-sticky pt-3">
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">
+            <a className="nav-link active" aria-current="page" href="/admin">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={24}
@@ -50,7 +55,7 @@ const SideBar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="/admin/order/list">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={24}
@@ -71,24 +76,8 @@ const SideBar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-users"
-              >
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx={9} cy={7} r={4} />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
+            <a className="nav-link" href="/admin/advantisment/list">
+              <i className="fas fa-ad" />
               Quản lý quảng cáo
             </a>
           </li>
@@ -97,6 +86,33 @@ const SideBar = () => {
               <i className="far fa-list-alt"></i>
               Quản lý chuyên mục sản phẩm
             </a>
+          </li>
+          <li className="nav-item dropdown">
+            <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="navbarScrollingDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              onClick={(e) => handleClickVisible(e)}
+            >
+              <i className="fas fa-cogs"></i>
+              Cài đặt
+            </a>
+
+            <ul
+              className="nav flex-column"
+              aria-labelledby="navbarScrollingDropdown"
+              style={visible ? { display: "block" } : { display: "none" }}
+            >
+              <li className="nav-item">
+                <a class="nav-link" href="/admin/setting/profile">
+                  <i className="fas fa-users"></i>
+                  Cài đặt người dùng
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>

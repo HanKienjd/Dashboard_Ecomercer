@@ -1,106 +1,136 @@
-/* eslint-disable no-restricted-globals */
 import React, { useState, useEffect } from "react";
-import { withRouter, NavLink } from "react-router-dom";
+import { Table as Tables, Button, Modal, PageHeader, notification } from "antd";
+import AdvantismentForm from "./AdvantismentForm";
 import AdminContent from "components/body/layout/AdminContent";
-import { Table, Button, PageHeader, notification, Spin } from "antd";
 import callApi from "actions/common/callApi";
-
+// import "./style.scss";
 const columns = [
   {
-    title: "Mã sản phẩm",
-    dataIndex: "id",
-    key: "id",
-    render(value, row, index) {
-      return <NavLink to={`/admin/category/detail/${row.id}`}>{value}</NavLink>;
+    title: "Ảnh quảng cáo",
+    dataIndex: "image",
+    key: "image",
+    render: (value, row, column) => {
+      return <img src={value} alt="image" className="image-responsive" />;
     },
   },
   {
-    title: "Tên sản phẩm",
-    dataIndex: "name",
-    key: "name",
-    render: (text) => <a>{text}</a>,
+    title: "Tên quảng cáo",
+    dataIndex: "content",
+    key: "content",
+  },
+  {
+    title: "Chuyên mục",
+    dataIndex: "product_id",
+    key: "product_id",
   },
 ];
 
-const AdvantismentList = (props) => {
-  const [DataListCategory, setDataListCategory] = useState();
+const PAGE_SIZE = 10;
+const AdvantismentList = () => {
+  const [visible, setVisible] = useState(false);
+  const [advantismentData, setAdvantismentData] = useState();
+  const [category, setCategoryList] = useState();
+  const [page, setPage] = useState(1);
   const [showButton, setShowButton] = useState(false);
-  const [RowId, setRowId] = useState();
-  const [loading, setLoading] = useState(false);
+  const [rowId, setRowId] = useState(" ");
 
-  const fetchDataCategory = async () => {
-    try {
-      callApi("api/categories", { method: "GET" }).then(
-        ({ data, code, message }) => {
-          if (data && code === 200) {
-            setDataListCategory(data);
-          }
+  const fetchAdvantisment = () => {
+    return callApi(`api/advertisements?limit=${PAGE_SIZE}&page=${page}`, {
+      method: "GET",
+    })
+      .then(({ data, code, message }) => {
+        if (data && code == 200) {
+          setAdvantismentData(data.advertisements);
         }
-      );
-    } catch (error) {}
+      })
+      .catch((error) => {
+        console.log("error => fetchAdvantisment", error);
+      });
   };
-  useEffect(() => {
-    fetchDataCategory();
-  }, []);
+
+  const fetchCategoryList = () => {
+    return callApi(`api/categories`, {
+      method: "GET",
+    })
+      .then(({ data, code, message }) => {
+        if (data && code == 200) {
+          setCategoryList(data);
+        }
+      })
+      .catch((error) => {
+        console.log("error => fetchAdvantisment", error);
+      });
+  };
 
   const delDataItems = () => {
-    setLoading(true);
     try {
-      callApi(`api/categories/${RowId}`, { method: "DELETE" }).then(
+      callApi(`api/advertisements/${rowId}`, { method: "DELETE" }).then(
         ({ data, code, message }) => {
-          setLoading(false);
           if (data && code === 204) {
             notification.open({
               message: "Xóa thành công",
             });
-            fetchDataCategory();
+            fetchAdvantisment();
           }
         }
       );
     } catch (error) {
-      setLoading(false);
-      console.log("CategoryList => delDataItems", error);
+      console.log("advantismentList => delDataItems", error);
     }
   };
 
+  useEffect(() => {
+    fetchAdvantisment();
+    fetchCategoryList();
+  }, []);
+
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
-      let row = selectedRows[0];
-      handleRowSelection(row.id);
+      handleRowSelection(selectedRows[0].id);
     },
   };
-  const handleRowSelection = (id) => {
-    setRowId(id);
+
+  const handleRowSelection = (value) => {
+    setRowId(value);
     setShowButton(true);
   };
 
   return (
     <AdminContent>
-      <Spin spinning={loading}>
-        <PageHeader
-          title="Danh sách chuyên mục"
-          extra={[
-            <Button type="primary" hidden={!showButton} onClick={delDataItems}>
-              Xóa
-            </Button>,
-            <NavLink to="/admin/category/create">
-              <Button key="1" type="primary">
-                Tạo chuyên mục
-              </Button>
-            </NavLink>,
-          ]}
+      <PageHeader
+        extra={[
+          <Button type="primary" hidden={!showButton} onClick={delDataItems}>
+            Xóa
+          </Button>,
+          <Button key="1" type="primary" onClick={() => setVisible(true)}>
+            {rowId > 0 ? "Sửa quảng cáo" : "Thêm quảng cáo"}
+          </Button>,
+        ]}
+      />
+      <Tables
+        rowKey={(record) => record.id}
+        rowSelection={{
+          type: "radio",
+          ...rowSelection,
+        }}
+        columns={columns}
+        dataSource={advantismentData}
+      />
+      <Modal
+        visible={visible}
+        width={600}
+        onCancel={() => setVisible(false)}
+        footer={null}
+      >
+        <AdvantismentForm
+          handleCancel={() => setVisible(false)}
+          id={rowId}
+          dataList={advantismentData}
+          category={category}
         />
-        <Table
-          rowSelection={{
-            type: "radio",
-            ...rowSelection,
-          }}
-          columns={columns}
-          dataSource={DataListCategory}
-        />
-      </Spin>
+      </Modal>
     </AdminContent>
   );
 };
 
-export default withRouter(AdvantismentList);
+export default AdvantismentList;
